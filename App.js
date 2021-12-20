@@ -1,8 +1,8 @@
+// import 'react-native-gesture-handler';
 import React, {useEffect, useState} from 'react';
-// import {NavigationContainer} from '@react-navigation/native';
-// import {AppNavigation} from './src/navigator/AppNavigation';
+import {NavigationContainer} from '@react-navigation/native';
+import {AppNavigation} from './src/navigator/AppNavigation';
 import SplashScreen from './src/views/splashScreen/index';
-import Login from './src/views/login';
 
 const App = () => {
   const [isLoading, setisLoading] = useState(true);
@@ -16,10 +16,9 @@ const App = () => {
   if (isLoading) return <SplashScreen />;
 
   return (
-    <Login />
-    // <NavigationContainer>
-    //   <AppNavigation />
-    // </NavigationContainer>
+    <NavigationContainer>
+      <AppNavigation />
+    </NavigationContainer>
   );
 };
 export default App;

@@ -1,12 +1,11 @@
 import React from 'react';
 import {Image, StyleSheet} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import {Header} from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 
 const HeaderLogin = () => {
   return (
-    <SafeAreaView>
+    <>
       <Header
         placement="left"
         leftComponent={<Image style={styles.image} source={require('../../../assets/resources/logoW.png')} />}
@@ -18,7 +17,7 @@ const HeaderLogin = () => {
           end: {x: 1.2, y: 0.5},
         }}
       />
-    </SafeAreaView>
+    </>
   );
 };
 const styles = StyleSheet.create({
