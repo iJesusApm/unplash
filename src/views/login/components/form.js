@@ -5,11 +5,13 @@ import {View, StyleSheet, ActivityIndicator} from 'react-native';
 import {TextInput} from 'react-native-paper';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useNavigation} from '@react-navigation/native';
 
 import Button from '../../../components/button';
 import Api from '../../../services/Api';
 
 const Form = () => {
+  const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -27,7 +29,6 @@ const Form = () => {
 
     Api.post('auth/login', item)
       .then(async res => {
-        console.log(res.user, res.access_token);
         if (res) {
           await AsyncStorage.clear();
           AsyncStorage.setItem('user', JSON.stringify(res.user));
@@ -35,11 +36,10 @@ const Form = () => {
           AsyncStorage.setItem('uuid', JSON.stringify(res.user.uuid));
           AsyncStorage.setItem('token', res.access_token);
           setIsLoading(false);
-          //   navigation.navigate('Home');
+          navigation.navigate('Home');
         }
       })
       .catch(err => {
-        console.log(err.response.data);
         const message = err.response.data.message ? err.response.data.message : err.response.data.error;
         alert(message);
         setIsLoading(false);
