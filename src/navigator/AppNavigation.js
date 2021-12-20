@@ -8,7 +8,7 @@ const options = {headerShown: false, marginTop: 0};
 
 const AppNavigation = () => {
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="Home">
       <Stack.Screen name="Login" component={Screen.Login} options={options} />
       <Stack.Screen name="Home" component={DrawerNavigator} options={options} />
     </Stack.Navigator>
