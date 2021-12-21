@@ -16,7 +16,7 @@ const Form = () => {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const inputTheme = {
-    colors: {primary: '#1175BA', underlineColor: 'transparent'},
+    colors: {primary: '#005386', underlineColor: 'transparent'},
     roundness: 30,
   };
 
@@ -76,7 +76,7 @@ const Form = () => {
       </View>
 
       {isLoading ? (
-        <ActivityIndicator size="large" color={'#1175BA'} style={styles.isLoading} />
+        <ActivityIndicator size="large" color={'#EB2C39'} style={styles.isLoading} />
       ) : (
         <Button titleStyle={styles.loginText} touchStyle={styles.loginContainer} action={HandlePress} text={'Sign in'} />
       )}
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   loginContainer: {
     width: 150,
     height: 35,
-    backgroundColor: '#1175BA',
+    backgroundColor: '#EB2C39',
     borderRadius: 35,
     marginTop: 15,
     alignSelf: 'flex-end',

@@ -9,7 +9,7 @@ const App = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      // setisLoading(false);
+      setisLoading(false);
     }, 3000);
   }, []);
 

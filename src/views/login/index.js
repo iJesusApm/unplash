@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, StyleSheet, ScrollView} from 'react-native';
+import {Text, StyleSheet, ScrollView, StatusBar} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import HeaderLogin from './components/header';
 import Form from './components/form';
@@ -7,10 +7,10 @@ import Form from './components/form';
 const Login = () => {
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar backgroundColor="#005386" />
       <HeaderLogin />
       <ScrollView style={styles.container}>
         <Text style={styles.title}>Welcome!</Text>
-        <Text style={styles.subTitle}>Espwindows Inventory Management Software</Text>
         <Form />
       </ScrollView>
     </SafeAreaView>

@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
     height: 250,
   },
   image: {resizeMode: 'contain', width: 300, height: 300, position: 'absolute', bottom: -30, marginRight: 'auto', marginLeft: -30},
-  // image: {resizeMode: 'contain', width: 300, height: 300, marginTop: 10, marginRight: 'auto', marginLeft: -28},
 });
 
 export default SplashScreen;
