@@ -4,7 +4,7 @@ import DrawerNavigator from './DrawerNavigator';
 import Screen from './Screen';
 
 const Stack = createNativeStackNavigator();
-const options = {headerShown: false, marginTop: 0};
+const options = {headerShown: false};
 
 const AppNavigation = () => {
   return (

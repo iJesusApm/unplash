@@ -78,7 +78,7 @@ const Form = () => {
       {isLoading ? (
         <ActivityIndicator size="large" color={'#1175BA'} style={styles.isLoading} />
       ) : (
-        <Button titleStyle={styles.loginText} touchStyle={styles.loginContainer} action={HandlePress} text={'Iniciar Sesión'} />
+        <Button titleStyle={styles.loginText} touchStyle={styles.loginContainer} action={HandlePress} text={'Sign in'} />
       )}
     </View>
   );

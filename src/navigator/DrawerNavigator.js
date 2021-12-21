@@ -7,7 +7,7 @@ import Screen from './Screen';
 import CustomDrawer from '../components/customDrawer';
 
 const Drawer = createDrawerNavigator();
-const options = {headerShown: true, marginTop: 0};
+const options = {headerShown: false, marginTop: 0};
 
 const DrawerNavigator = () => {
   return (

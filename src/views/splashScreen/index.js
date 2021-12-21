@@ -1,10 +1,11 @@
 import React from 'react';
-import {View, StyleSheet, Image} from 'react-native';
+import {View, StyleSheet, Image, StatusBar} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 const SplashScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
       <View style={styles.center}>
         <Image style={styles.logo} source={require('../../assets/resources/logoC.png')} />
       </View>
