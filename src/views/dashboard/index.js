@@ -40,7 +40,7 @@ const Dashboard = () => {
       <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
       <HeaderDashboard />
       <View>
-        <ImageBackground source={require('../../assets/resources/background-1.png')} style={{width: '100%', height: '100%'}}>
+        <ImageBackground source={require('../../assets/resources/background-2.png')} style={{width: '100%', height: '100%'}}>
           {state.loading ? (
             <ActivityIndicator size="large" color={'#FFFFFF'} style={styles.isLoading} />
           ) : (

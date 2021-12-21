@@ -1,14 +1,22 @@
 import React from 'react';
 import {StyleSheet, Dimensions} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import Api from '../../../services/Api';
 
 const Layout = () => {
+  const navigation = useNavigation();
+
   const onSuccess = e => {
+    console.log(e.data);
     if (e.data) {
       Api.get(`qr/${e.data}`)
         .then(res => {
-          console.log(res);
+          if (res.status === 200) {
+            navigation.navigate('Order', {
+              data: res,
+            });
+          }
         })
         .catch(err => {
           console.log(err.response);
