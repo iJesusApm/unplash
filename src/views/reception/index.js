@@ -4,19 +4,22 @@ import {View, Text, StyleSheet, StatusBar, ImageBackground} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import HeaderDashboard from '../dashboard/components/header';
+import Layout from './components/layout';
 
 const Reception = () => {
   return (
     <SafeAreaView style={styles.main}>
       <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
       <HeaderDashboard />
-      <View style={{marginTop: 15}}>
+      <View>
         <ImageBackground source={require('../../assets/resources/background-1.png')} style={{width: '100%', height: '100%'}}>
-          <View>
-            <View style={styles.rowReception}>
-              <Ionicons name="cube" size={22} color={'#FFFFFF'} />
-              <Text style={styles.textReception}>Reception</Text>
-            </View>
+          <View style={styles.rowReception}>
+            <Ionicons name="cube" size={22} color={'#FFFFFF'} />
+            <Text style={styles.textReception}>Reception</Text>
+          </View>
+          <View style={styles.qr}>
+            <Text style={styles.textQr}>Scan</Text>
+            <Layout />
           </View>
         </ImageBackground>
       </View>
@@ -27,5 +30,7 @@ const styles = StyleSheet.create({
   main: {flex: 1},
   rowReception: {flexDirection: 'row', alignItems: 'center', marginLeft: 20, paddingTop: 15},
   textReception: {fontSize: 20, color: '#FFFFFF', marginLeft: 15, letterSpacing: 2},
+  qr: {alignItems: 'center', marginLeft: 20, paddingTop: 15},
+  textQr: {fontSize: 25, color: '#FFFFFF', letterSpacing: 2, marginVertical: 20, fontWeight: 'bold'},
 });
 export default Reception;

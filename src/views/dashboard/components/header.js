@@ -16,7 +16,7 @@ const HeaderDashboard = () => {
 const styles = StyleSheet.create({
   contain: {
     alignItems: 'center',
-    height: 80,
+    height: 100,
     backgroundColor: '#FFFFFF',
   },
   image: {

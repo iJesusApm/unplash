@@ -17,9 +17,9 @@ const Body = ({color, title, subtitle, value}) => {
   );
 };
 const styles = StyleSheet.create({
-  main: {flex: 1, flexDirection: 'row', marginHorizontal: '10%'},
+  main: {flex: 1, flexDirection: 'row', marginHorizontal: '5%'},
   segment: {flex: 1, alignItems: 'center', justifyContent: 'center'},
-  segmentText: {flex: 1, alignItems: 'flex-start', justifyContent: 'center', paddingLeft: 35},
+  segmentText: {flex: 1, alignItems: 'center', justifyContent: 'center', paddingLeft: 35},
   title: {color: '#C5C5C5', fontSize: 30, fontWeight: 'bold'},
   subtitle: {color: '#FFFFFF', fontSize: 20, fontWeight: 'bold'},
   circle: {

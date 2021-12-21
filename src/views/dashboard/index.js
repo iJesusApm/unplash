@@ -39,7 +39,7 @@ const Dashboard = () => {
     <SafeAreaView style={styles.main}>
       <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
       <HeaderDashboard />
-      <View style={{marginTop: 15}}>
+      <View>
         <ImageBackground source={require('../../assets/resources/background-1.png')} style={{width: '100%', height: '100%'}}>
           {state.loading ? (
             <ActivityIndicator size="large" color={'#FFFFFF'} style={styles.isLoading} />
@@ -56,7 +56,7 @@ const Dashboard = () => {
   );
 };
 const styles = StyleSheet.create({
-  main: {flex: 1},
+  main: {flex: 1, backgroundColor: '#FFFFFF'},
   isLoading: {
     alignSelf: 'center',
     justifyContent: 'center',
