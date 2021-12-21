@@ -1,21 +1,21 @@
 import React from 'react';
 import {StyleSheet, Image} from 'react-native';
 
-const HeaderSplash = () => {
+const FooterSplash = () => {
   return (
     <>
-      <Image style={styles.image} source={require('../../../assets/resources/header.png')} />
+      <Image style={styles.image} source={require('../../../assets/resources/footer.png')} />
     </>
   );
 };
 const styles = StyleSheet.create({
   image: {
     position: 'absolute',
-    top: 0,
+    bottom: 0,
     resizeMode: 'stretch',
     width: '100%',
-    height: 40,
+    height: 50,
   },
 });
 
-export default HeaderSplash;
+export default FooterSplash;
