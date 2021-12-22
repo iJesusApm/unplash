@@ -8,7 +8,7 @@ import ReceptionForm from './components/receptionForm';
 import SystemBody from './components/systemBody';
 
 const Order = ({route}) => {
-  const {order, item} = route.params;
+  const {order, item, fromReception = false} = route.params;
   const system = order.orders[0].types.length > 0 ? order.orders[0].types[1].items[0] : null;
   return (
     <SafeAreaView style={styles.main}>
@@ -19,7 +19,7 @@ const Order = ({route}) => {
         <Text style={styles.po}>{order.po}</Text>
         <View style={{flex: 1, marginTop: 25}}>
           <SystemBody data={system ? system : null} />
-          <ReceptionForm itemId={item} itemOrder={order} />
+          {fromReception ? <ReceptionForm itemId={item} itemOrder={order} /> : null}
         </View>
       </ScrollView>
       <FooterSplash />

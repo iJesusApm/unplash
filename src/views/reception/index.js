@@ -27,6 +27,7 @@ const Reception = () => {
           navigation.navigate('Order', {
             order: res.order,
             item: res.item_id,
+            fromReception: true,
           });
         }
       })
