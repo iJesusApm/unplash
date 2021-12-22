@@ -48,6 +48,14 @@ const DrawerNavigator = () => {
           ...options,
         }}
       />
+      <Drawer.Screen
+        name="Consult"
+        component={Screen.ConsultOrder}
+        options={{
+          drawerIcon: ({color}) => <Ionicons name="search" size={22} color={color} />,
+          ...options,
+        }}
+      />
     </Drawer.Navigator>
   );
 };
