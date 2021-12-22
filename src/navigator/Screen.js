@@ -3,4 +3,6 @@ import Dashboard from '../views/dashboard';
 import Dispatch from '../views/dispatch';
 import Reception from '../views/reception';
 import Order from '../views/order';
-export default {Dashboard, Dispatch, Login, Order, Reception};
+import ConfirmOrder from '../views/confirmOrder';
+
+export default {ConfirmOrder, Dashboard, Dispatch, Login, Order, Reception};

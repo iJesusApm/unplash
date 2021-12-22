@@ -12,7 +12,7 @@ const Dispatch = () => {
       <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
       <HeaderWhite />
       <View>
-        <ImageBackground source={require('../../assets/resources/background-2.png')} style={{width: '100%', height: '100%'}}>
+        <ImageBackground source={require('../../assets/resources/background.png')} style={{width: '100%', height: '100%'}}>
           <View style={styles.rowDispatch}>
             <Ionicons name="car-outline" size={22} color={'#FFFFFF'} />
             <Text style={styles.textDispatch}>Dispatch</Text>

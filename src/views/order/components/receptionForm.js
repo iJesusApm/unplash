@@ -8,7 +8,7 @@ import moment from 'moment';
 import Button from '../../../components/button';
 import Api from '../../../services/Api';
 
-const ReceptionForm = ({itemId}) => {
+const ReceptionForm = ({itemId, itemOrder}) => {
   const id = itemId;
   const navigation = useNavigation();
   const [location, setLocation] = useState('');
@@ -29,7 +29,9 @@ const ReceptionForm = ({itemId}) => {
       .then(async res => {
         if (res) {
           setIsLoading(false);
-          navigation.push('Home');
+          navigation.navigate('ConfirmOrder', {
+            order: itemOrder,
+          });
         }
       })
       .catch(err => {

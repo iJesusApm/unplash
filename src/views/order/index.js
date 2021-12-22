@@ -19,7 +19,7 @@ const Order = ({route}) => {
         <Text style={styles.po}>{order.po}</Text>
         <View style={{flex: 1, marginTop: 25}}>
           <SystemBody data={system ? system : null} />
-          <ReceptionForm itemId={item} />
+          <ReceptionForm itemId={item} itemOrder={order} />
         </View>
       </ScrollView>
       <FooterSplash />
