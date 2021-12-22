@@ -2,13 +2,13 @@ import React from 'react';
 import {Image, StyleSheet, StatusBar} from 'react-native';
 import {Header} from 'react-native-elements';
 
-const HeaderDashboard = () => {
+const HeaderWhite = () => {
   return (
     <>
       <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
       <Header
         placement="left"
-        leftComponent={<Image style={styles.image} source={require('../../../assets/resources/logo.png')} />}
+        leftComponent={<Image style={styles.image} source={require('../assets/resources/logo.png')} />}
         containerStyle={styles.contain}
         backgroundColor={'#FFFFFF'}
       />
@@ -18,7 +18,7 @@ const HeaderDashboard = () => {
 const styles = StyleSheet.create({
   contain: {
     alignItems: 'center',
-    height: 70,
+    height: 50,
     marginBottom: 20,
   },
   image: {
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HeaderDashboard;
+export default HeaderWhite;

@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React from 'react';
 import {StyleSheet, Dimensions} from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
@@ -10,8 +11,8 @@ const Layout = () => {
         .then(res => {
           console.log(res);
         })
-        .catch(err => {
-          console.log(err.response);
+        .catch(() => {
+          alert('An error has occurred. QR code no valid.');
         });
     }
   };

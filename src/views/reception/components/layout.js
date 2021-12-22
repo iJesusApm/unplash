@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React from 'react';
 import {StyleSheet, Dimensions} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
@@ -14,12 +15,13 @@ const Layout = () => {
         .then(res => {
           if (res.status === 200) {
             navigation.navigate('Order', {
-              data: res,
+              order: res.order,
+              item: res.item_id,
             });
           }
         })
-        .catch(err => {
-          console.log(err.response);
+        .catch(() => {
+          alert('An error has occurred. QR code no valid.');
         });
     }
   };

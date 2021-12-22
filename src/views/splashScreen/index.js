@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Image, StatusBar} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import FooterSplash from './components/footer';
+import FooterSplash from '../../components/footer';
 import HeaderSplash from './components/header';
 
 const SplashScreen = () => {

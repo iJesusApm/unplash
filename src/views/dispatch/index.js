@@ -3,14 +3,14 @@ import React from 'react';
 import {View, Text, StyleSheet, StatusBar, ImageBackground} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import HeaderDashboard from '../dashboard/components/header';
+import HeaderWhite from '../../components/headerWhite';
 import Layout from './components/layout';
 
 const Dispatch = () => {
   return (
     <SafeAreaView style={styles.main}>
       <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
-      <HeaderDashboard />
+      <HeaderWhite />
       <View>
         <ImageBackground source={require('../../assets/resources/background-2.png')} style={{width: '100%', height: '100%'}}>
           <View style={styles.rowDispatch}>

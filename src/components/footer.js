@@ -4,7 +4,7 @@ import {StyleSheet, Image} from 'react-native';
 const FooterSplash = () => {
   return (
     <>
-      <Image style={styles.image} source={require('../../../assets/resources/footer.png')} />
+      <Image style={styles.image} source={require('../assets/resources/footer.png')} />
     </>
   );
 };

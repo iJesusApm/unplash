@@ -49,7 +49,7 @@ const Form = () => {
   return (
     <View style={{flex: 1}}>
       <View style={styles.main}>
-        <View style={styles.inputContainer}>
+        <View>
           <TextInput
             value={email}
             onChangeText={text => setEmail(text)}
@@ -60,7 +60,7 @@ const Form = () => {
             left={<TextInput.Icon name={'account-outline'} color={'#808080'} size={30} />}
           />
         </View>
-        <View style={styles.inputContainer}>
+        <View>
           <TextInput
             value={password}
             onChangeText={text => setPassword(text)}

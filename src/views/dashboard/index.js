@@ -6,7 +6,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 
 import Api from '../../services/Api';
 
-import HeaderDashboard from './components/header';
+import HeaderWhite from '../../components/headerWhite';
 import Body from './components/body';
 
 const Dashboard = () => {
@@ -38,7 +38,7 @@ const Dashboard = () => {
   return (
     <SafeAreaView style={styles.main}>
       <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
-      <HeaderDashboard />
+      <HeaderWhite />
       <ImageBackground source={require('../../assets/resources/background.png')} style={styles.background}>
         {state.loading ? (
           <ActivityIndicator size="large" color={'#FFFFFF'} style={styles.isLoading} />
