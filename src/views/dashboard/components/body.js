@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, Dimensions} from 'react-native';
 
-const Body = ({color, title, subtitle, value}) => {
+const Body = ({title, subtitle, value}) => {
   return (
     <View style={styles.main}>
       <View style={styles.segmentText}>
@@ -9,7 +9,7 @@ const Body = ({color, title, subtitle, value}) => {
         <Text style={styles.subtitle}>{subtitle}</Text>
       </View>
       <View style={styles.segment}>
-        <View style={[styles.circle, {backgroundColor: color}]} elevation={10}>
+        <View style={styles.circle} elevation={10}>
           <Text style={styles.numberText}>{value}</Text>
         </View>
       </View>
@@ -17,12 +17,13 @@ const Body = ({color, title, subtitle, value}) => {
   );
 };
 const styles = StyleSheet.create({
-  main: {flex: 1, flexDirection: 'row', marginHorizontal: '5%'},
+  main: {flex: 1, flexDirection: 'row', marginHorizontal: '8%'},
   segment: {flex: 1, alignItems: 'center', justifyContent: 'center'},
-  segmentText: {flex: 1, alignItems: 'center', justifyContent: 'center', paddingLeft: 35},
+  segmentText: {flex: 1, alignItems: 'center', justifyContent: 'center', paddingLeft: 15},
   title: {color: '#C5C5C5', fontSize: 30, fontWeight: 'bold'},
   subtitle: {color: '#FFFFFF', fontSize: 20, fontWeight: 'bold'},
   circle: {
+    backgroundColor: '#EB2C39',
     borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2,
     width: Dimensions.get('window').width * 0.32,
     height: Dimensions.get('window').width * 0.32,

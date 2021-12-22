@@ -1,7 +1,7 @@
 /* eslint-disable handle-callback-err */
 /* eslint-disable react-native/no-inline-styles */
 import React, {useEffect, useReducer} from 'react';
-import {View, StyleSheet, ImageBackground, StatusBar, ActivityIndicator} from 'react-native';
+import {View, StyleSheet, ImageBackground, StatusBar, ActivityIndicator, Dimensions} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 import Api from '../../services/Api';
@@ -39,24 +39,23 @@ const Dashboard = () => {
     <SafeAreaView style={styles.main}>
       <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
       <HeaderDashboard />
-      <View>
-        <ImageBackground source={require('../../assets/resources/background-2.png')} style={{width: '100%', height: '100%'}}>
-          {state.loading ? (
-            <ActivityIndicator size="large" color={'#FFFFFF'} style={styles.isLoading} />
-          ) : (
-            <View style={{flex: 0.8}}>
-              <Body color={'#1D55A2'} title={'N° Orders'} subtitle={'for recieved'} value={state.order_for_recieved} />
-              <Body color={'#1D55A2'} title={'Orders'} subtitle={'ready to dispatch'} value={state.orders_ready_to_dispatch} />
-              <Body color={'#1CA7D6'} title={'Orders'} subtitle={'delayed not dispatched'} value={state.orders_delayed_not_dispatched} />
-            </View>
-          )}
-        </ImageBackground>
-      </View>
+      <ImageBackground source={require('../../assets/resources/background.png')} style={styles.background}>
+        {state.loading ? (
+          <ActivityIndicator size="large" color={'#FFFFFF'} style={styles.isLoading} />
+        ) : (
+          <View style={{flex: 0.8}}>
+            <Body title={'N° Orders'} subtitle={'for recieved'} value={state.order_for_recieved} />
+            <Body title={'Orders'} subtitle={'ready to dispatch'} value={state.orders_ready_to_dispatch} />
+            <Body title={'Orders'} subtitle={'delayed not dispatched'} value={state.orders_delayed_not_dispatched} />
+          </View>
+        )}
+      </ImageBackground>
     </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
-  main: {flex: 1, backgroundColor: '#FFFFFF'},
+  main: {flex: 1, backgroundColor: '#FFFFFF', marginRight: '0.1%'},
+  background: {height: Dimensions.get('window').height},
   isLoading: {
     alignSelf: 'center',
     justifyContent: 'center',
