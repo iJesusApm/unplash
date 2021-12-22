@@ -21,7 +21,6 @@ const Reception = () => {
   };
 
   const Search = () => {
-    console.log(qrCode);
     Api.get(`qr/${qrCode}`)
       .then(res => {
         if (res.status === 200) {

@@ -1,25 +1,27 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {Text, StyleSheet, View} from 'react-native';
+import {Text, StyleSheet, View, ScrollView} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import FooterSplash from '../../components/footer';
 import HeaderLogin from '../login/components/header';
-import Body from './components/body';
+import ReceptionForm from './components/receptionForm';
+import SystemBody from './components/systemBody';
 
 const Order = ({route}) => {
   const {order, item} = route.params;
-  const system = order.orders[0].types[1].items[0];
+  const system = order.orders[0].types.length > 0 ? order.orders[0].types[1].items[0] : null;
   return (
     <SafeAreaView style={styles.main}>
       <HeaderLogin />
-      <View style={styles.main}>
+      <ScrollView style={styles.main}>
         <Text style={styles.title}>Order</Text>
         <Text style={styles.name}>{order.order_name}</Text>
         <Text style={styles.po}>{order.po}</Text>
         <View style={{flex: 1, marginTop: 25}}>
-          <Body title={'System'} data={system} />
+          <SystemBody data={system ? system : null} />
+          <ReceptionForm itemId={item} />
         </View>
-      </View>
+      </ScrollView>
       <FooterSplash />
     </SafeAreaView>
   );
