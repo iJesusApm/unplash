@@ -7,7 +7,7 @@ const HeaderMenu = () => {
     <>
       <Header
         placement="left"
-        leftComponent={<Image style={styles.image} source={require('../assets/resources/logoC.png')} />}
+        leftComponent={<Image style={styles.image} source={require('../assets/resources/logo.png')} />}
         containerStyle={styles.contain}
       />
     </>
@@ -15,15 +15,14 @@ const HeaderMenu = () => {
 };
 const styles = StyleSheet.create({
   contain: {
-    marginTop: -100,
-    alignItems: 'flex-start',
+    marginTop: -120,
     backgroundColor: '#FFFFFF',
   },
   image: {
     marginLeft: 15,
     resizeMode: 'contain',
-    width: 160,
-    height: 60,
+    width: 150,
+    height: 80,
   },
 });
 

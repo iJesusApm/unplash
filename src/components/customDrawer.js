@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet, ImageBackground} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, ImageBackground, Dimensions} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import {DrawerContentScrollView, DrawerItemList} from '@react-navigation/drawer';
@@ -16,7 +16,7 @@ const CustomDrawer = props => {
   return (
     <View style={styles.main}>
       <HeaderMenu />
-      <ImageBackground source={require('../assets/resources/background-2.png')} style={{width: '100%', height: '100%'}}>
+      <ImageBackground source={require('../assets/resources/background-menu.png')} style={styles.background}>
         <DrawerContentScrollView {...props}>
           <DrawerItemList {...props} />
           <TouchableOpacity onPress={HandleClick}>
@@ -34,5 +34,6 @@ const styles = StyleSheet.create({
   main: {flex: 1, marginTop: 120},
   rowLogout: {flexDirection: 'row', alignItems: 'center', marginLeft: 20, paddingTop: 15},
   textLogout: {fontSize: 20, color: '#FFFFFF', marginLeft: 15},
+  background: {height: Dimensions.get('window').height},
 });
 export default CustomDrawer;
