@@ -13,7 +13,10 @@ const ReceptionForm = ({itemId, itemOrder}) => {
   const navigation = useNavigation();
   const [location, setLocation] = useState('');
   const [date, setDate] = useState(moment(new Date()).format('DD-MM-YYYY'));
+  const [comments, setComments] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingReject, setIsLoadingReject] = useState(false);
+  const [isRejected, setisRejected] = useState(false);
   const inputTheme = {
     colors: {primary: '#005386', underlineColor: 'transparent'},
     roundness: 30,
@@ -41,34 +44,83 @@ const ReceptionForm = ({itemId, itemOrder}) => {
       });
   };
 
+  const HandlePressReject = () => {
+    setIsLoadingReject(true);
+    const item = {
+      location: comments.trim(),
+    };
+    Api.post(`reception/order/system/item/${id}/reject`, item)
+      .then(async res => {
+        if (res) {
+          setIsLoadingReject(false);
+          navigation.push('Home');
+        }
+      })
+      .catch(err => {
+        const message = err.response.data.message ? err.response.data.message : err.response.data.error;
+        alert(message);
+        setIsLoadingReject(false);
+      });
+  };
+
   return (
     <View style={styles.main}>
-      <View style={{justifyContent: 'center', alignItems: 'center'}}>
-        <Text style={styles.titleInput}>Date</Text>
-        <TextInput
-          placeholder="DD-MM-YYYY"
-          value={date}
-          onChangeText={text => setDate(text)}
-          style={styles.body}
-          theme={inputTheme}
-          underlineColor="transparent"
-          maxLength={76}
-        />
-        <Text style={styles.titleInput}>Location</Text>
-        <TextInput
-          value={location}
-          onChangeText={text => setLocation(text)}
-          style={styles.body}
-          theme={inputTheme}
-          underlineColor="transparent"
-          maxLength={76}
-        />
-      </View>
-
-      {isLoading ? (
-        <ActivityIndicator size="large" color={'#EB2C39'} style={styles.isLoading} />
+      {isRejected ? (
+        <>
+          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+            <Text style={styles.titleInput}>Comments</Text>
+            <TextInput
+              value={comments}
+              onChangeText={text => setComments(text)}
+              style={styles.body}
+              theme={inputTheme}
+              underlineColor="transparent"
+              maxLength={76}
+              placeholder="Rejects comments.."
+            />
+          </View>
+          {isLoadingReject ? (
+            <ActivityIndicator size="large" color={'#EB2C39'} style={styles.isLoading} />
+          ) : (
+            <View style={{flexDirection: 'row'}}>
+              <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={() => setisRejected(!isRejected)} text={'Cancel'} />
+              <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={HandlePressReject} text={'Confirm Reject'} />
+            </View>
+          )}
+        </>
       ) : (
-        <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={HandlePress} text={'Confirm'} />
+        <>
+          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+            <Text style={styles.titleInput}>Date</Text>
+            <TextInput
+              placeholder="DD-MM-YYYY"
+              value={date}
+              onChangeText={text => setDate(text)}
+              style={styles.body}
+              theme={inputTheme}
+              underlineColor="transparent"
+              maxLength={76}
+            />
+            <Text style={styles.titleInput}>Location</Text>
+            <TextInput
+              value={location}
+              onChangeText={text => setLocation(text)}
+              style={styles.body}
+              theme={inputTheme}
+              underlineColor="transparent"
+              maxLength={76}
+            />
+          </View>
+
+          {isLoading ? (
+            <ActivityIndicator size="large" color={'#EB2C39'} style={styles.isLoading} />
+          ) : (
+            <View style={{flexDirection: 'row'}}>
+              <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={() => setisRejected(!isRejected)} text={'Reject'} />
+              <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={HandlePress} text={'Confirm'} />
+            </View>
+          )}
+        </>
       )}
     </View>
   );

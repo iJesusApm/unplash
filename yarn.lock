@@ -5679,6 +5679,13 @@
   "resolved" "https://registry.npmjs.org/react-native-size-matters/-/react-native-size-matters-0.3.1.tgz"
   "version" "0.3.1"
 
+"react-native-textarea@^1.0.4":
+  "integrity" "sha512-XM78hqlpUom+YOtjZn69sPZn3ReRXsJfjV0t790k/qNPuc7NG8akfU7vSeKsuRSRH2zVaqk5FbxdkITkeh+3jw=="
+  "resolved" "https://registry.npmjs.org/react-native-textarea/-/react-native-textarea-1.0.4.tgz"
+  "version" "1.0.4"
+  dependencies:
+    "prop-types" "^15.5.10"
+
 "react-native-vector-icons@*", "react-native-vector-icons@^9.0.0", "react-native-vector-icons@>7.0.0":
   "integrity" "sha512-qKX5d5/TafHmI4B7UOSZCL3BAGh7ZfF30iLwRgxBkKfZl2lKSuHp8Ottj9OyWh9b5fFtlg+LtyvZrns3g2kh+w=="
   "resolved" "https://registry.npmjs.org/react-native-vector-icons/-/react-native-vector-icons-9.0.0.tgz"
