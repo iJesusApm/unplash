@@ -6,4 +6,5 @@ import Order from '../views/order';
 import OrderInformation from '../views/orderInformation';
 import ConfirmOrder from '../views/confirmOrder';
 import ConsultOrder from '../views/consultOrder';
-export default {ConfirmOrder, ConsultOrder, Dashboard, Dispatch, Login, Order, OrderInformation, Reception};
+import OrderSignature from '../views/orderSignature';
+export default {ConfirmOrder, ConsultOrder, Dashboard, Dispatch, Login, Order, OrderSignature, OrderInformation, Reception};

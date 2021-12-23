@@ -12,7 +12,7 @@ const Layout = () => {
     if (e.data) {
       Api.get(`qr/${e.data}`)
         .then(res => {
-          navigation.navigate('Order', {
+          navigation.navigate('OrderSignature', {
             order: res.order,
             item: res.item_id,
           });

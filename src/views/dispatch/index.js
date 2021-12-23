@@ -24,9 +24,9 @@ const Dispatch = () => {
     Api.get(`qr/${qrCode}`)
       .then(res => {
         if (res.status === 200) {
-          navigation.navigate('Order', {
+          navigation.navigate('OrderSignature', {
             order: res.order,
-            item: res.item_id,
+            item: res.order.uuid,
           });
         }
       })
