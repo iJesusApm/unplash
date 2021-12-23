@@ -6,10 +6,12 @@ import Button from '../../components/button';
 import FooterSplash from '../../components/footer';
 import HeaderLogin from '../login/components/header';
 import SystemBody from './components/systemBody';
+import ReceptionBody from './components/receptionBody';
 
 const OrderInformation = ({route, navigation}) => {
   const {order} = route.params;
   const system = order.orders[0].types[1] ? order.orders[0].types[1].items[0] : null;
+  const orderLocation = order.location ? order.location : null;
 
   const Exit = () => {
     navigation.goBack();
@@ -24,8 +26,8 @@ const OrderInformation = ({route, navigation}) => {
         <Text style={styles.po}>{order.po}</Text>
         <View style={{flex: 1}}>
           <SystemBody data={system ? system : null} />
-          <SystemBody data={system ? system : null} />
-          <SystemBody data={system ? system : null} />
+          <ReceptionBody data={system && system.recieved_user ? system : null} location={orderLocation} />
+          {/* <SystemBody data={system ? system : null} /> */}
           <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Exit} text={'Go back'} />
         </View>
       </ScrollView>
