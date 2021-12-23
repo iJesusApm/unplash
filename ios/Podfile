@@ -25,6 +25,8 @@ target 'Usahi' do
 
   pod 'RNPermissions', :path => '../node_modules/react-native-permissions'
 
+  pod 'react-native-signature-capture', :path => '../node_modules/react-native-signature-capture'
+
   target 'UsahiTests' do
     inherit! :complete
     # Pods for testing
