@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-alert */
 import moment from 'moment';
-import React, {useState, useRef} from 'react';
+import React, {useState, createRef} from 'react';
 import {View, Text, StyleSheet, Dimensions, ActivityIndicator, TouchableHighlight} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Button from '../../../components/button';
@@ -13,23 +13,25 @@ const SystemBody = ({itemId, itemOrder}) => {
   const navigation = useNavigation();
   const uuid = itemId;
   const [isLoading, setIsLoading] = useState(false);
-  const [signature, setSignature] = useState('');
-  const sign = useRef();
+  const sign = createRef();
 
-  const HandlePress = () => {
+  const HandlePress = base64Image => {
     setIsLoading(true);
     const item = {
-      signature: signature.trim(),
+      signature: base64Image,
       dispatch_date: moment(new Date()).format('YYYY-MM-DD'),
     };
     Api.post(`dispatch/order/${uuid}`, item)
       .then(async res => {
-        if (res) {
+        console.log(res);
+        if (res.status === 200) {
           setIsLoading(false);
           navigation.navigate('ConfirmOrder', {
             order: itemOrder,
             routeToNavigate: 'Dispatch',
           });
+        } else {
+          alert(`${res.messaje}`);
         }
       })
       .catch(err => {
@@ -40,18 +42,19 @@ const SystemBody = ({itemId, itemOrder}) => {
   };
 
   const saveSign = () => {
-    sign.saveImage();
+    sign.current.saveImage();
   };
 
   const resetSign = () => {
-    sign.resetImage();
+    sign.current.resetImage();
   };
 
   const _onSaveEvent = result => {
     //result.encoded - for the base64 encoded png
     //result.pathName - for the file path name
-    console.log(result);
+    HandlePress(`data:image/png;base64, ${result.encoded}`);
   };
+
   const _onDragEvent = () => {
     // This callback will be called when the user enters signature
     console.log('dragged');
@@ -65,14 +68,15 @@ const SystemBody = ({itemId, itemOrder}) => {
         ref={sign}
         onSaveEvent={_onSaveEvent}
         onDragEvent={_onDragEvent}
-        saveImageFileInExtStorage={false}
         showNativeButtons={false}
         showTitleLabel={false}
-        backgroundColor="#1175BA"
-        strokeColor="#ffffff"
+        viewMode={'portrait'}
+        saveImageFileInExtStorage={false}
+        backgroundColor="#005386"
+        strokeColor="#FFFFFF"
+        showBorder={true}
         minStrokeWidth={4}
         maxStrokeWidth={4}
-        viewMode={'portrait'}
       />
 
       {isLoading ? (

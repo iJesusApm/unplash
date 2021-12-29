@@ -14,7 +14,7 @@ const Layout = () => {
         .then(res => {
           navigation.navigate('OrderSignature', {
             order: res.order,
-            item: res.item_id,
+            item: res.order.orders[0].uuid,
           });
         })
         .catch(() => {

@@ -26,7 +26,7 @@ const Dispatch = () => {
         if (res.status === 200) {
           navigation.navigate('OrderSignature', {
             order: res.order,
-            item: res.order.uuid,
+            item: res.order.orders[0].uuid,
           });
         }
       })

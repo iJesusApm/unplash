@@ -1,7 +1,6 @@
 import React from 'react';
 import {Text, StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-// import FooterSplash from '../../components/footer';
 import HeaderLogin from '../login/components/header';
 import SystemBody from './components/systemBody';
 
@@ -13,7 +12,6 @@ const OrderSignature = ({route}) => {
       <Text style={styles.title}>Order</Text>
       <Text style={styles.name}>{order.order_name}</Text>
       <SystemBody itemId={item} itemOrder={order} />
-      {/* <FooterSplash /> */}
     </SafeAreaView>
   );
 };
