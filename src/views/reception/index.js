@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, StatusBar, ImageBackground, Dimensions, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, StatusBar, ImageBackground, Dimensions, ScrollView, Switch} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {TextInput} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -19,6 +19,8 @@ const Reception = () => {
     colors: {primary: '#005386', underlineColor: 'transparent'},
     roundness: 30,
   };
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   const Search = () => {
     Api.get(`qr/${qrCode}`)
@@ -50,6 +52,17 @@ const Reception = () => {
           </View>
           <View style={{flex: 1}}>
             <Text style={styles.textQr}>Scan</Text>
+            <View style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'center'}}>
+              <Text style={styles.switchText}>Systems</Text>
+              <Switch
+                trackColor={{false: '#767577', true: '#46C455'}}
+                thumbColor={'#f4f3f4'}
+                ios_backgroundColor="#3e3e3e"
+                onValueChange={toggleSwitch}
+                value={isEnabled}
+              />
+              <Text style={styles.switchText}>Accesories</Text>
+            </View>
             <Layout />
           </View>
           <View style={{flex: 0.5, alignItems: 'center'}}>
@@ -96,5 +109,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'center',
   },
+  switchText: {fontSize: 14, color: '#FFFFFF', fontWeight: 'bold', textAlign: 'center', marginHorizontal: 15},
 });
 export default Reception;

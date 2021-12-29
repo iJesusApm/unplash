@@ -11,25 +11,25 @@ const OrderDispatch = ({route, navigation}) => {
   const {order, accesories} = route.params;
   const [type, setType] = useState([]);
   const [isEmpty, setisEmpty] = useState(false);
+  const orderName = accesories ? order.order_name : order.type.order.order_master.order_name;
+  const orderPo = accesories ? order.po : order.type.order.order_master.po;
+  const uuid = accesories ? order.orders[0].uuid : order.type.order.uuid;
 
   useEffect(() => {
     if (accesories) {
       if (order) {
-        const array = [];
-        if (order.orders[0].types.length > 0) {
-          setType(order.orders[0].types);
-        } else {
-          array.push(order.orders[0].types[3]);
-          setType(array);
+        if (order.orders[0].accesories.length > 0) {
+          setType(order.orders[0].accesories);
         }
       }
     } else {
+      console.log(order);
       if (order) {
-        if (order.orders[0].types.length > 0) {
-          setType(order.orders[0].types);
-        } else {
-          setisEmpty(true);
-        }
+        setType(order);
+        setisEmpty(true);
+      } else {
+        setType(null);
+        setisEmpty(true);
       }
     }
   }, [order, accesories]);
@@ -41,7 +41,7 @@ const OrderDispatch = ({route, navigation}) => {
   const ConfirmOrder = () => {
     navigation.navigate('OrderSignature', {
       order: order,
-      item: order.orders[0].uuid,
+      item: uuid,
     });
   };
 
@@ -50,15 +50,15 @@ const OrderDispatch = ({route, navigation}) => {
       <HeaderLogin />
       <View style={styles.main}>
         <Text style={styles.title}>Order</Text>
-        <Text style={styles.name}>{order.order_name}</Text>
-        <Text style={styles.po}>{order.po}</Text>
+        <Text style={styles.name}>{orderName}</Text>
+        <Text style={styles.po}>{orderPo}</Text>
         <View style={{flex: 1, marginTop: 10}}>
           {type.length > 0 ? (
             <>
               <FlatList data={type} renderItem={({item}) => <AccesoriesBody data={item} />} keyExtractor={item => item.id.toString()} />
             </>
           ) : (
-            <>{isEmpty ? <SystemBody data={null} /> : <ActivityIndicator size="large" color={'#EB2C39'} style={styles.isLoading} />}</>
+            <>{isEmpty ? <SystemBody data={type} /> : <ActivityIndicator size="large" color={'#EB2C39'} style={styles.isLoading} />}</>
           )}
           <View style={{flexDirection: 'row', alignSelf: 'center'}}>
             <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Exit} text={'Continue Scan'} />

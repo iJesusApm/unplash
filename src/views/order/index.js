@@ -10,7 +10,7 @@ import Button from '../../components/button';
 
 const Order = ({route, navigation}) => {
   const {order, item, fromReception = false} = route.params;
-  const system = order.orders.length > 0 && order.orders[0].types ? order.orders[0].types[1].items[0] : null;
+  const system = order.orders.length > 0 && order.orders[0].types ? order.orders[0].types[1].items : null;
 
   const Exit = () => {
     navigation.goBack();

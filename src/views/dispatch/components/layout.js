@@ -30,7 +30,7 @@ const Layout = ({isEnabled}) => {
           .then(res => {
             if (res.status === 200) {
               navigation.navigate('OrderDispatch', {
-                order: res.order,
+                order: res.item,
                 accesories: false,
               });
             } else {
