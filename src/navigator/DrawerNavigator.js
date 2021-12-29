@@ -56,6 +56,14 @@ const DrawerNavigator = () => {
           ...options,
         }}
       />
+      <Drawer.Screen
+        name="Client"
+        component={Screen.Client}
+        options={{
+          drawerIcon: ({color}) => <Ionicons name="person" size={22} color={color} />,
+          ...options,
+        }}
+      />
     </Drawer.Navigator>
   );
 };
