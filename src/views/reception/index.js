@@ -27,8 +27,8 @@ const Reception = () => {
       .then(res => {
         if (res.status === 200) {
           navigation.navigate('Order', {
-            order: res.order,
-            item: res.item_id,
+            order: res.item,
+            item: res.item.id,
             fromReception: true,
           });
         } else {

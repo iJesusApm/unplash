@@ -23,7 +23,6 @@ const OrderDispatch = ({route, navigation}) => {
         }
       }
     } else {
-      console.log(order);
       if (order) {
         setType(order);
         setisEmpty(true);

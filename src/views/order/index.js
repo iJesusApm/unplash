@@ -10,7 +10,9 @@ import Button from '../../components/button';
 
 const Order = ({route, navigation}) => {
   const {order, item, fromReception = false} = route.params;
-  const system = order.orders.length > 0 && order.orders[0].types ? order.orders[0].types[1].items : null;
+  const system = order;
+  const orderName = order.type.order.order_master.order_name;
+  const orderPo = order.type.order.order_master.po;
 
   const Exit = () => {
     navigation.goBack();
@@ -21,8 +23,8 @@ const Order = ({route, navigation}) => {
       <HeaderLogin />
       <ScrollView style={styles.main}>
         <Text style={styles.title}>Order</Text>
-        <Text style={styles.name}>{order.order_name}</Text>
-        <Text style={styles.po}>{order.po}</Text>
+        <Text style={styles.name}>{orderName}</Text>
+        <Text style={styles.po}>{orderPo}</Text>
         <View style={{flex: 1, marginTop: 25}}>
           <SystemBody data={system ? system : null} />
           {fromReception ? (
