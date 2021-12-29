@@ -23,7 +23,6 @@ const SystemBody = ({itemId, itemOrder}) => {
     };
     Api.post(`dispatch/order/${uuid}`, item)
       .then(async res => {
-        console.log(res);
         if (res.status === 200) {
           setIsLoading(false);
           navigation.navigate('ConfirmOrder', {

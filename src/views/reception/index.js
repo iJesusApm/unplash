@@ -29,6 +29,8 @@ const Reception = () => {
             item: res.item_id,
             fromReception: true,
           });
+        } else {
+          alert(`${res.messaje}`);
         }
       })
       .catch(() => {

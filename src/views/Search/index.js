@@ -23,7 +23,6 @@ const Search = () => {
   const SearchQR = () => {
     Api.get(`qr/${qrCode}/accessories`)
       .then(res => {
-        console.log(res);
         if (res.status === 200) {
           navigation.navigate('OrderInformation', {
             order: res.order,

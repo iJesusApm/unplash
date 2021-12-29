@@ -18,6 +18,8 @@ const Layout = () => {
               item: res.item_id,
               fromReception: true,
             });
+          } else {
+            alert(`${res.messaje}`);
           }
         })
         .catch(() => {

@@ -5,25 +5,42 @@ import {useNavigation} from '@react-navigation/native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import Api from '../../../services/Api';
 
-const Layout = () => {
+const Layout = ({isEnabled}) => {
   const navigation = useNavigation();
 
   const onSuccess = e => {
-    if (e.data) {
-      Api.get(`qr/${e.data}`)
-        .then(res => {
-          if (res.status === 200) {
-            navigation.navigate('OrderSignature', {
-              order: res.order,
-              item: res.order.orders[0].uuid,
-            });
-          } else {
-            alert(`${res.messaje}`);
-          }
-        })
-        .catch(() => {
-          alert('An error has occurred. QR code no valid.');
-        });
+    if (isEnabled) {
+      if (e.data) {
+        Api.get(`qr/${e.data}/accessories`)
+          .then(res => {
+            if (res.status === 200) {
+              navigation.navigate('OrderDispatch', {
+                order: res.order,
+                accesories: true,
+              });
+            } else {
+              alert(`${res.messaje}`);
+            }
+          })
+          .catch(() => {
+            alert('An error has occurred. QR code no valid.');
+          });
+      } else {
+        Api.get(`qr/${e.data}`)
+          .then(res => {
+            if (res.status === 200) {
+              navigation.navigate('OrderDispatch', {
+                order: res.order,
+                accesories: false,
+              });
+            } else {
+              alert(`${res.messaje}`);
+            }
+          })
+          .catch(() => {
+            alert('An error has occurred. QR code no valid.');
+          });
+      }
     }
   };
   return <QRCodeScanner onRead={onSuccess} reactivate={true} reactivateTimeout={5000} showMarker={true} cameraStyle={styles.camera} />;
