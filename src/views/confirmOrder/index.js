@@ -7,11 +7,11 @@ import HeaderWhite from '../../components/headerWhite';
 import Button from '../../components/button';
 
 const ConfirmOrder = ({route}) => {
-  const {order} = route.params;
+  const {order, routeToNavigate} = route.params;
   const navigation = useNavigation();
 
   const Confirm = () => {
-    navigation.push('Home');
+    navigation.navigate(`${routeToNavigate}`);
   };
 
   return (

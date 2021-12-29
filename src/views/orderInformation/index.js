@@ -3,31 +3,31 @@ import React from 'react';
 import {Text, StyleSheet, Dimensions, ScrollView, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Button from '../../components/button';
-import FooterSplash from '../../components/footer';
 import HeaderLogin from '../login/components/header';
-import SystemBody from './components/systemBody';
+// import SystemBody from './components/systemBody';
 import ReceptionBody from './components/receptionBody';
+import AccesoriesBody from './components/accesoriesBody';
 
 const OrderInformation = ({route, navigation}) => {
   const {order} = route.params;
-  const system = order.orders[0].types[1] ? order.orders[0].types[1].items[0] : null;
+  const system = order.orders.length > 0 && order.orders[0].types[5] ? order.orders[0].types[5].items[0] : null;
   const orderLocation = order.location ? order.location : null;
 
   const Exit = () => {
     navigation.goBack();
   };
+
   return (
     <SafeAreaView style={styles.main}>
       <HeaderLogin />
-      <FooterSplash />
       <ScrollView style={styles.main}>
         <Text style={styles.title}>Order Information</Text>
         <Text style={styles.name}>{order.order_name}</Text>
         <Text style={styles.po}>{order.po}</Text>
         <View style={{flex: 1}}>
-          <SystemBody data={system ? system : null} />
           <ReceptionBody data={system && system.recieved_user ? system : null} location={orderLocation} />
           {/* <SystemBody data={system ? system : null} /> */}
+          <AccesoriesBody data={order.orders[0].types[5].items} />
           <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Exit} text={'Go back'} />
         </View>
       </ScrollView>

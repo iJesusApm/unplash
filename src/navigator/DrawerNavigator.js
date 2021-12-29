@@ -49,8 +49,8 @@ const DrawerNavigator = () => {
         }}
       />
       <Drawer.Screen
-        name="Consult"
-        component={Screen.ConsultOrder}
+        name="Search"
+        component={Screen.Search}
         options={{
           drawerIcon: ({color}) => <Ionicons name="search" size={22} color={color} />,
           ...options,

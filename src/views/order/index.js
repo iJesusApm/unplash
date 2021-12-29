@@ -9,7 +9,7 @@ import SystemBody from './components/systemBody';
 
 const Order = ({route}) => {
   const {order, item, fromReception = false} = route.params;
-  const system = order.orders[0].types[1] ? order.orders[0].types[1].items[0] : null;
+  const system = order.orders.length > 0 && order.orders[0].types ? order.orders[0].types[1].items[0] : null;
   return (
     <SafeAreaView style={styles.main}>
       <HeaderLogin />

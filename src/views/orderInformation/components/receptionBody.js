@@ -43,10 +43,10 @@ const ReceptionBody = ({data, location}) => {
 };
 const styles = StyleSheet.create({
   main: {flex: 1, alignSelf: 'center', marginVertical: 5},
-  top: {backgroundColor: '#1175BA', width: Dimensions.get('screen').width * 0.7, height: 40, borderTopLeftRadius: 5, borderTopRightRadius: 5},
+  top: {backgroundColor: '#1175BA', width: Dimensions.get('screen').width * 0.98, height: 40, borderTopLeftRadius: 5, borderTopRightRadius: 5},
   bottom: {
     backgroundColor: '#E1E1E1',
-    width: Dimensions.get('screen').width * 0.7,
+    width: Dimensions.get('screen').width * 0.98,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     alignItems: 'center',

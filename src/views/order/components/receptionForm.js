@@ -34,6 +34,7 @@ const ReceptionForm = ({itemId, itemOrder}) => {
           setIsLoading(false);
           navigation.navigate('ConfirmOrder', {
             order: itemOrder,
+            routeToNavigate: 'Reception',
           });
         }
       })

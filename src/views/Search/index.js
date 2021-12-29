@@ -12,7 +12,7 @@ import Button from '../../components/button';
 import HeaderWhite from '../../components/headerWhite';
 import Layout from './components/layout';
 
-const ConsultOrder = () => {
+const Search = () => {
   const [qrCode, setqrCode] = useState('');
   const navigation = useNavigation();
   const inputTheme = {
@@ -20,13 +20,16 @@ const ConsultOrder = () => {
     roundness: 30,
   };
 
-  const Search = () => {
-    Api.get(`qr/${qrCode}`)
+  const SearchQR = () => {
+    Api.get(`qr/${qrCode}/accessories`)
       .then(res => {
+        console.log(res);
         if (res.status === 200) {
           navigation.navigate('OrderInformation', {
             order: res.order,
           });
+        } else {
+          alert(`${res.messaje}`);
         }
       })
       .catch(() => {
@@ -42,7 +45,7 @@ const ConsultOrder = () => {
         <ImageBackground source={require('../../assets/resources/background.png')} style={styles.background}>
           <View style={styles.rowReception}>
             <Ionicons name="search" size={22} color={'#FFFFFF'} />
-            <Text style={styles.textReception}>Consult</Text>
+            <Text style={styles.textReception}>Search</Text>
           </View>
           <View style={{flex: 1}}>
             <Text style={styles.textQr}>Scan</Text>
@@ -58,7 +61,7 @@ const ConsultOrder = () => {
               maxLength={76}
               left={<TextInput.Icon name={'magnify'} color={'#005386'} size={30} />}
             />
-            <Button titleStyle={styles.loginText} touchStyle={styles.loginContainer} action={Search} text={'Search'} />
+            <Button titleStyle={styles.loginText} touchStyle={styles.loginContainer} action={SearchQR} text={'Search'} />
           </View>
         </ImageBackground>
       </ScrollView>
@@ -93,4 +96,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-export default ConsultOrder;
+export default Search;

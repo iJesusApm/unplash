@@ -10,7 +10,7 @@ const Layout = () => {
 
   const onSuccess = e => {
     if (e.data) {
-      Api.get(`qr/${e.data}`)
+      Api.get(`qr/${e.data}/accessories`)
         .then(res => {
           if (res.status === 200) {
             navigation.navigate('OrderInformation', {

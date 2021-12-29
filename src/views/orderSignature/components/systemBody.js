@@ -28,6 +28,7 @@ const SystemBody = ({itemId, itemOrder}) => {
           setIsLoading(false);
           navigation.navigate('ConfirmOrder', {
             order: itemOrder,
+            routeToNavigate: 'Dispatch',
           });
         }
       })
