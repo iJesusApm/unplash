@@ -1,32 +1,36 @@
 import React from 'react';
-import {Text, StyleSheet} from 'react-native';
+import {Text, StyleSheet, ImageBackground, Dimensions} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import HeaderLogin from '../login/components/header';
+import HeaderWhite from '../../components/headerWhite';
 import SystemBody from './components/systemBody';
 
 const OrderSignature = ({route}) => {
   const {order, item} = route.params;
   return (
     <SafeAreaView style={styles.main}>
-      <HeaderLogin />
-      <Text style={styles.title}>Order</Text>
-      <Text style={styles.name}>{order.order_name}</Text>
-      <SystemBody itemId={item} itemOrder={order} />
+      <ImageBackground source={require('../../assets/resources/background.png')} style={styles.background}>
+        <HeaderWhite />
+        <Text style={styles.title}>Order</Text>
+        <Text style={styles.name}>{order.order_name}</Text>
+        <SystemBody itemId={item} itemOrder={order} />
+      </ImageBackground>
     </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
   main: {flex: 1},
   title: {
-    marginTop: 50,
+    marginTop: 10,
     fontSize: 30,
     fontWeight: 'bold',
     textAlign: 'center',
+    color: '#FFFFFF',
   },
   name: {
     fontSize: 25,
     textAlign: 'center',
-    color: '#1175BA',
+    color: '#E4E4E4',
   },
+  background: {height: Dimensions.get('window').height, flex: 1},
 });
 export default OrderSignature;

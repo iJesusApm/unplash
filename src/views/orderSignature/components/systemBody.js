@@ -2,7 +2,7 @@
 /* eslint-disable no-alert */
 import moment from 'moment';
 import React, {useState, createRef} from 'react';
-import {View, Text, StyleSheet, Dimensions, ActivityIndicator, TouchableHighlight} from 'react-native';
+import {View, Text, StyleSheet, Dimensions, ActivityIndicator} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Button from '../../../components/button';
 import Api from '../../../services/Api';
@@ -72,8 +72,8 @@ const SystemBody = ({itemId, itemOrder}) => {
         showTitleLabel={false}
         viewMode={'portrait'}
         saveImageFileInExtStorage={false}
-        backgroundColor="#005386"
-        strokeColor="#FFFFFF"
+        backgroundColor="#FFFFFF"
+        strokeColor="#000000"
         showBorder={true}
         minStrokeWidth={4}
         maxStrokeWidth={4}
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('screen').width,
     height: '75%',
   },
-  title: {color: '#000000', textAlign: 'center', marginTop: 'auto', marginBottom: 'auto', fontSize: 18},
+  title: {color: '#FFFFFF', textAlign: 'center', marginTop: 'auto', marginBottom: 10, fontSize: 15},
   lblButton: {
     fontSize: 16,
     color: '#FFFFFF',
