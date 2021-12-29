@@ -1,17 +1,15 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {Text, StyleSheet, Dimensions, ScrollView, View} from 'react-native';
+import {Text, StyleSheet, View, ScrollView, Dimensions} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import Button from '../../components/button';
+import FooterSplash from '../../components/footer';
 import HeaderLogin from '../login/components/header';
 import SystemBody from './components/systemBody';
-import ReceptionBody from './components/receptionBody';
-import AccesoriesBody from './components/accesoriesBody';
+import Button from '../../components/button';
 
-const OrderInformation = ({route, navigation}) => {
-  const {order} = route.params;
-  const system = order.orders.length > 0 && order.orders[0].types[1] ? order.orders[0].types[1].items[0] : null;
-  const orderLocation = order.location ? order.location : null;
+const OrderDispatch = ({route, navigation}) => {
+  const {order, item} = route.params;
+  const system = order.orders.length > 0 && order.orders[0].types ? order.orders[0].types[1].items[0] : null;
 
   const Exit = () => {
     navigation.goBack();
@@ -21,23 +19,22 @@ const OrderInformation = ({route, navigation}) => {
     <SafeAreaView style={styles.main}>
       <HeaderLogin />
       <ScrollView style={styles.main}>
-        <Text style={styles.title}>Order Information</Text>
+        <Text style={styles.title}>Order</Text>
         <Text style={styles.name}>{order.order_name}</Text>
         <Text style={styles.po}>{order.po}</Text>
-        <View style={{flex: 1}}>
-          <ReceptionBody data={system && system.recieved_user ? system : null} location={orderLocation} />
+        <View style={{flex: 1, marginTop: 25}}>
           <SystemBody data={system ? system : null} />
-          <AccesoriesBody data={order.orders[0].types[5].items} />
-          <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Exit} text={'Go back'} />
+          {/* <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Exit} text={'Go back'} /> */}
         </View>
       </ScrollView>
+      <FooterSplash />
     </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
   main: {flex: 1},
   title: {
-    marginTop: 10,
+    marginTop: 50,
     fontSize: 30,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -67,4 +64,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-export default OrderInformation;
+export default OrderDispatch;

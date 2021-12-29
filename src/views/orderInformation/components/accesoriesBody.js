@@ -21,7 +21,7 @@ const AccesoriesBody = ({data}) => {
   return (
     <View style={styles.main}>
       <TouchableOpacity style={styles.top} onPress={() => setExpand(!expand)}>
-        <Text style={styles.title}>Accesories</Text>
+        <Text style={styles.title}>Items</Text>
       </TouchableOpacity>
       {expand ? (
         <View style={styles.bottom}>

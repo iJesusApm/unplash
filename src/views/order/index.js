@@ -25,9 +25,12 @@ const Order = ({route, navigation}) => {
         <Text style={styles.po}>{order.po}</Text>
         <View style={{flex: 1, marginTop: 25}}>
           <SystemBody data={system ? system : null} />
-          {fromReception ? <ReceptionForm itemId={item} itemOrder={order} /> : null}
+          {fromReception ? (
+            <ReceptionForm itemId={item} itemOrder={order} />
+          ) : (
+            <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Exit} text={'Go back'} />
+          )}
         </View>
-        <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Exit} text={'Go back'} />
       </ScrollView>
       <FooterSplash />
     </SafeAreaView>

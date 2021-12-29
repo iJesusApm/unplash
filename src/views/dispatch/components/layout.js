@@ -12,10 +12,14 @@ const Layout = () => {
     if (e.data) {
       Api.get(`qr/${e.data}`)
         .then(res => {
-          navigation.navigate('OrderSignature', {
-            order: res.order,
-            item: res.order.orders[0].uuid,
-          });
+          if (res.status === 200) {
+            navigation.navigate('OrderSignature', {
+              order: res.order,
+              item: res.order.orders[0].uuid,
+            });
+          } else {
+            alert(`${res.messaje}`);
+          }
         })
         .catch(() => {
           alert('An error has occurred. QR code no valid.');

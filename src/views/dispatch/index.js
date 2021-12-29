@@ -28,6 +28,8 @@ const Dispatch = () => {
             order: res.order,
             item: res.order.orders[0].uuid,
           });
+        } else {
+          alert(`${res.messaje}`);
         }
       })
       .catch(() => {
