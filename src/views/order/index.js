@@ -2,7 +2,7 @@
 import React, {useEffect, useState} from 'react';
 import {Text, StyleSheet, View, ScrollView, Dimensions} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import FooterSplash from '../../components/footer';
+// import FooterSplash from '../../components/footer';
 import HeaderLogin from '../login/components/header';
 import ReceptionForm from './components/receptionForm';
 import SystemBody from './components/systemBody';
@@ -48,7 +48,7 @@ const Order = ({route, navigation}) => {
           )}
         </View>
       </ScrollView>
-      <FooterSplash />
+      {/* <FooterSplash /> */}
     </SafeAreaView>
   );
 };

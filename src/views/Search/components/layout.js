@@ -9,13 +9,16 @@ const Layout = () => {
   const navigation = useNavigation();
 
   const onSuccess = e => {
+    console.log(e.data);
     if (e.data) {
-      Api.get(`qr/${e.data}/accessories`)
+      Api.get(`qr/${e.data}`)
         .then(res => {
           if (res.status === 200) {
-            navigation.navigate('OrderInformation', {
-              order: res.order,
+            navigation.navigate('OrderSearchInformation', {
+              orderuuid: res.item.type.order.uuid,
             });
+          } else {
+            alert(`${res.messaje}`);
           }
         })
         .catch(() => {

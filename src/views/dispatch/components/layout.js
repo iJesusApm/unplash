@@ -25,22 +25,22 @@ const Layout = ({isEnabled}) => {
           .catch(() => {
             alert('An error has occurred. QR code no valid.');
           });
-      } else {
-        Api.get(`qr/${e.data}`)
-          .then(res => {
-            if (res.status === 200) {
-              navigation.navigate('OrderDispatch', {
-                order: res.item,
-                accesories: false,
-              });
-            } else {
-              alert(`${res.messaje}`);
-            }
-          })
-          .catch(() => {
-            alert('An error has occurred. QR code no valid.');
-          });
       }
+    } else {
+      Api.get(`qr/${e.data}`)
+        .then(res => {
+          if (res.status === 200) {
+            navigation.navigate('OrderDispatch', {
+              order: res.item,
+              accesories: false,
+            });
+          } else {
+            alert(`${res.messaje}`);
+          }
+        })
+        .catch(() => {
+          alert('An error has occurred. QR code no valid.');
+        });
     }
   };
   return <QRCodeScanner onRead={onSuccess} reactivate={true} reactivateTimeout={5000} showMarker={true} cameraStyle={styles.camera} />;
