@@ -6,16 +6,21 @@ import HeaderLogin from '../login/components/header';
 import SystemBody from './components/systemBody';
 import Button from '../../components/button';
 import AccesoriesBody from './components/accesoriesBody';
+import AlreadyText from '../../components/alreadyText';
 
 const OrderDispatch = ({route, navigation}) => {
   const {order, accesories} = route.params;
   const [type, setType] = useState([]);
   const [isEmpty, setisEmpty] = useState(false);
+  const [isDispatch, setisDispatch] = useState(false);
   const orderName = accesories ? order.order_name : order.type.order.order_master.order_name;
   const orderPo = accesories ? order.po : order.type.order.order_master.po;
   const uuid = accesories ? order.orders[0].uuid : order.type.order.uuid;
 
   useEffect(() => {
+    if (order.distpatch_date) {
+      setisDispatch(true);
+    }
     if (accesories) {
       if (order) {
         if (order.orders[0].accesories.length > 0) {
@@ -23,6 +28,9 @@ const OrderDispatch = ({route, navigation}) => {
         }
       }
     } else {
+      if (order.type.order.signature) {
+        setisDispatch(true);
+      }
       if (order) {
         setType(order);
         setisEmpty(true);
@@ -59,10 +67,16 @@ const OrderDispatch = ({route, navigation}) => {
           ) : (
             <>{isEmpty ? <SystemBody data={type} /> : <ActivityIndicator size="large" color={'#EB2C39'} style={styles.isLoading} />}</>
           )}
-          <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-            <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Exit} text={'Continue Scan'} />
-            <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={ConfirmOrder} text={'Confirm'} />
-          </View>
+          {isDispatch ? (
+            <AlreadyText text={'This order has already been dispatched'} />
+          ) : (
+            <>
+              <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Exit} text={'Continue Scan'} />
+                <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={ConfirmOrder} text={'Confirm'} />
+              </View>
+            </>
+          )}
         </View>
       </View>
     </SafeAreaView>
