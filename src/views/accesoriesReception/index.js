@@ -7,6 +7,7 @@ import SystemBody from './components/systemBody';
 import Button from '../../components/button';
 import AccesoriesBody from './components/accesoriesBody';
 import ReceptionForm from '../order/components/receptionForm';
+import AlreadyText from '../../components/alreadyText';
 
 const AccesoriesReception = ({route, navigation}) => {
   const {order, itemId} = route.params;
@@ -15,8 +16,12 @@ const AccesoriesReception = ({route, navigation}) => {
   const orderName = order.order_name;
   const orderPo = order.po;
   const [isConfirm, setisConfirm] = useState(false);
+  const [isRecived, setisRecived] = useState(false);
 
   useEffect(() => {
+    if (order.location) {
+      setisRecived(true);
+    }
     if (order) {
       if (order.orders[0].accesories.length > 0) {
         setType(order.orders[0].accesories);
@@ -44,15 +49,21 @@ const AccesoriesReception = ({route, navigation}) => {
             <>{isEmpty ? <SystemBody data={type} /> : <ActivityIndicator size="large" color={'#EB2C39'} style={styles.isLoading} />}</>
           )}
         </View>
-        {isConfirm ? (
-          <View style={{marginBottom: 25}}>
-            <ReceptionForm itemId={itemId} itemOrder={order} accesories={true} />
-          </View>
+        {isRecived ? (
+          <AlreadyText text={'This order has already been received'} />
         ) : (
-          <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-            <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Exit} text={'Continue Scan'} />
-            <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={() => setisConfirm(!isConfirm)} text={'Confirm'} />
-          </View>
+          <>
+            {isConfirm ? (
+              <View style={{marginBottom: 25}}>
+                <ReceptionForm itemId={itemId} itemOrder={order} accesories={true} />
+              </View>
+            ) : (
+              <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Exit} text={'Continue Scan'} />
+                <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={() => setisConfirm(!isConfirm)} text={'Confirm'} />
+              </View>
+            )}
+          </>
         )}
       </View>
     </SafeAreaView>

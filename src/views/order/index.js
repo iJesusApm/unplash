@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Text, StyleSheet, View, ScrollView, Dimensions} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import FooterSplash from '../../components/footer';
@@ -7,12 +7,20 @@ import HeaderLogin from '../login/components/header';
 import ReceptionForm from './components/receptionForm';
 import SystemBody from './components/systemBody';
 import Button from '../../components/button';
+import AlreadyText from '../../components/alreadyText';
 
 const Order = ({route, navigation}) => {
   const {order, item, fromReception = false} = route.params;
+  const [isRecived, setisRecived] = useState(false);
   const system = order;
   const orderName = order.type.order.order_master.order_name;
   const orderPo = order.type.order.order_master.po;
+
+  useEffect(() => {
+    if (order.recived_date) {
+      setisRecived(true);
+    }
+  }, [order]);
 
   const Exit = () => {
     navigation.goBack();
@@ -27,10 +35,16 @@ const Order = ({route, navigation}) => {
         <Text style={styles.po}>{orderPo}</Text>
         <View style={{flex: 1, marginTop: 25}}>
           <SystemBody data={system ? system : null} />
-          {fromReception ? (
-            <ReceptionForm itemId={item} itemOrder={order} />
+          {isRecived ? (
+            <AlreadyText text={'This order has already been received'} />
           ) : (
-            <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Exit} text={'Go back'} />
+            <>
+              {fromReception ? (
+                <ReceptionForm itemId={item} itemOrder={order} />
+              ) : (
+                <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Exit} text={'Go back'} />
+              )}
+            </>
           )}
         </View>
       </ScrollView>
