@@ -3,7 +3,7 @@ import React from 'react';
 import {View, StyleSheet, ImageBackground, StatusBar, Text, Dimensions, Image} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
-import HeaderWhite from '../../components/headerWhite';
+import HeaderWhiteWithoutButton from '../../components/headerWhiteWithoutButton';
 import Button from '../../components/button';
 
 const ConfirmOrder = ({route}) => {
@@ -17,7 +17,7 @@ const ConfirmOrder = ({route}) => {
   return (
     <SafeAreaView style={styles.main}>
       <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
-      <HeaderWhite />
+      <HeaderWhiteWithoutButton />
       <ImageBackground source={require('../../assets/resources/background.png')} style={styles.background}>
         <View>
           <Text style={styles.title}>Order</Text>

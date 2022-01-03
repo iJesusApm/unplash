@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, StyleSheet, ImageBackground, Dimensions} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import HeaderWhite from '../../components/headerWhite';
+import HeaderWhiteWithoutButton from '../../components/headerWhiteWithoutButton';
 import SystemBody from './components/systemBody';
 
 const OrderSignature = ({route}) => {
@@ -9,7 +9,7 @@ const OrderSignature = ({route}) => {
   return (
     <SafeAreaView style={styles.main}>
       <ImageBackground source={require('../../assets/resources/background.png')} style={styles.background}>
-        <HeaderWhite />
+        <HeaderWhiteWithoutButton />
         <Text style={styles.title}>Order</Text>
         <Text style={styles.name}>{order.order_name}</Text>
         <SystemBody itemId={item} itemOrder={order} />
