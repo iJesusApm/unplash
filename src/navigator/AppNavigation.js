@@ -15,6 +15,7 @@ const AppNavigation = () => {
       <Stack.Screen name="OrderDispatch" component={Screen.OrderDispatch} options={options} />
       <Stack.Screen name="OrderSignature" component={Screen.OrderSignature} options={options} />
       <Stack.Screen name="OrderInformation" component={Screen.OrderInformation} options={options} />
+      <Stack.Screen name="OrderSearchInformation" component={Screen.OrderSearchInformation} options={options} />
       <Stack.Screen name="ConfirmOrder" component={Screen.ConfirmOrder} options={options} />
     </Stack.Navigator>
   );

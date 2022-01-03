@@ -8,5 +8,19 @@ import ConfirmOrder from '../views/confirmOrder';
 import Search from '../views/Search';
 import OrderSignature from '../views/orderSignature';
 import OrderDispatch from '../views/orderDispatch';
+import OrderSearchInformation from '../views/orderSearchInformation';
 import Client from '../views/client';
-export default {Client, ConfirmOrder, Search, Dashboard, Dispatch, Login, Order, OrderSignature, OrderDispatch, OrderInformation, Reception};
+export default {
+  Client,
+  ConfirmOrder,
+  Search,
+  Dashboard,
+  Dispatch,
+  Login,
+  Order,
+  OrderSignature,
+  OrderDispatch,
+  OrderInformation,
+  OrderSearchInformation,
+  Reception,
+};

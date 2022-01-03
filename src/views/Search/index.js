@@ -21,11 +21,11 @@ const Search = () => {
   };
 
   const SearchQR = () => {
-    Api.get(`qr/${qrCode}/accessories`)
+    Api.get(`qr/${qrCode}`)
       .then(res => {
         if (res.status === 200) {
-          navigation.navigate('OrderInformation', {
-            order: res.order,
+          navigation.navigate('OrderSearchInformation', {
+            orderuuid: res.item.type.order.uuid,
           });
         } else {
           alert(`${res.messaje}`);
