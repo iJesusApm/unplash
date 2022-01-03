@@ -8,7 +8,7 @@ import moment from 'moment';
 import Button from '../../../components/button';
 import Api from '../../../services/Api';
 
-const ReceptionForm = ({itemId, itemOrder}) => {
+const ReceptionForm = ({itemId, itemOrder, accesories = false}) => {
   const id = itemId;
   const navigation = useNavigation();
   const [location, setLocation] = useState('');
@@ -28,12 +28,18 @@ const ReceptionForm = ({itemId, itemOrder}) => {
       location: location.trim(),
       receive_date: moment(date, 'DD-MM-YYYY').format('YYYY-MM-DD[T]HH:mm:ss'),
     };
+    let orderItem = {};
+    if (accesories) {
+      orderItem = {order_name: itemOrder.order_name, po: itemOrder.po};
+    } else {
+      orderItem = {order_name: itemOrder.type.order.order_master.order_name, po: itemOrder.type.order.order_master.po};
+    }
     Api.post(`reception/order/system/item/${id}`, item)
       .then(async res => {
         if (res) {
           setIsLoading(false);
           navigation.navigate('ConfirmOrder', {
-            order: {order_name: itemOrder.type.order.order_master.order_name, po: itemOrder.type.order.order_master.po},
+            order: orderItem,
             routeToNavigate: 'Reception',
           });
         }

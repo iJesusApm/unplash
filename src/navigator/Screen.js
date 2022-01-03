@@ -10,6 +10,7 @@ import OrderSignature from '../views/orderSignature';
 import OrderDispatch from '../views/orderDispatch';
 import OrderSearchInformation from '../views/orderSearchInformation';
 import Client from '../views/client';
+import AccesoriesReception from '../views/accesoriesReception';
 export default {
   Client,
   ConfirmOrder,
@@ -23,4 +24,5 @@ export default {
   OrderInformation,
   OrderSearchInformation,
   Reception,
+  AccesoriesReception,
 };

@@ -13,6 +13,7 @@ const AppNavigation = () => {
       <Stack.Screen name="Home" component={DrawerNavigator} options={options} />
       <Stack.Screen name="Order" component={Screen.Order} options={options} />
       <Stack.Screen name="OrderDispatch" component={Screen.OrderDispatch} options={options} />
+      <Stack.Screen name="AccesoriesReception" component={Screen.AccesoriesReception} options={options} />
       <Stack.Screen name="OrderSignature" component={Screen.OrderSignature} options={options} />
       <Stack.Screen name="OrderInformation" component={Screen.OrderInformation} options={options} />
       <Stack.Screen name="OrderSearchInformation" component={Screen.OrderSearchInformation} options={options} />

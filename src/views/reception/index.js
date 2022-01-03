@@ -23,21 +23,38 @@ const Reception = () => {
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   const Search = () => {
-    Api.get(`qr/${qrCode}`)
-      .then(res => {
-        if (res.status === 200) {
-          navigation.navigate('Order', {
-            order: res.item,
-            item: res.item.id,
-            fromReception: true,
-          });
-        } else {
-          alert(`${res.messaje}`);
-        }
-      })
-      .catch(() => {
-        alert('An error has occurred. QR code no valid.');
-      });
+    if (isEnabled) {
+      Api.get(`qr/${qrCode}/accessories`)
+        .then(res => {
+          if (res.status === 200) {
+            navigation.navigate('AccesoriesReception', {
+              order: res.order,
+              itemId: res.order.id,
+            });
+          } else {
+            alert(`${res.messaje}`);
+          }
+        })
+        .catch(() => {
+          alert('An error has occurred. QR code no valid.');
+        });
+    } else {
+      Api.get(`qr/${qrCode}`)
+        .then(res => {
+          if (res.status === 200) {
+            navigation.navigate('Order', {
+              order: res.item,
+              item: res.item.id,
+              fromReception: true,
+            });
+          } else {
+            alert(`${res.messaje}`);
+          }
+        })
+        .catch(() => {
+          alert('An error has occurred. QR code no valid.');
+        });
+    }
   };
 
   return (
