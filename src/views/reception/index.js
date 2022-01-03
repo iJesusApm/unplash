@@ -80,7 +80,7 @@ const Reception = () => {
               />
               <Text style={styles.switchText}>Accesories</Text>
             </View>
-            <Layout />
+            <Layout isEnabled={isEnabled} />
           </View>
           <View style={{flex: 0.5, alignItems: 'center'}}>
             <TextInput
