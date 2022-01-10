@@ -11,7 +11,7 @@ const ConfirmOrder = ({route}) => {
   const navigation = useNavigation();
 
   const Confirm = () => {
-    navigation.navigate(`${routeToNavigate}`);
+    navigation.push('Home', {screen: `${routeToNavigate}`});
   };
 
   return (

@@ -29,6 +29,7 @@ const ReceptionForm = ({itemId, itemOrder}) => {
     orderItem = {order_name: itemOrder.order_name, po: itemOrder.po};
     Api.post(`reception/order/${id}`, item)
       .then(async res => {
+        console.log(res);
         if (res) {
           setIsLoading(false);
           navigation.navigate('ConfirmOrder', {
