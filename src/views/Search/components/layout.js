@@ -9,7 +9,6 @@ const Layout = () => {
   const navigation = useNavigation();
 
   const onSuccess = e => {
-    console.log(e.data);
     if (e.data) {
       Api.get(`qr/${e.data}`)
         .then(res => {
