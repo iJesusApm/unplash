@@ -19,6 +19,7 @@ const AppNavigation = () => {
       <Stack.Screen name="OrderSearchInformation" component={Screen.OrderSearchInformation} options={options} />
       <Stack.Screen name="ConfirmOrder" component={Screen.ConfirmOrder} options={options} />
       <Stack.Screen name="OrderReceptionComplete" component={Screen.OrderReceptionComplete} options={options} />
+      <Stack.Screen name="GraveyardInfo" component={Screen.GraveyardInfo} options={options} />
     </Stack.Navigator>
   );
 };

@@ -65,6 +65,14 @@ const DrawerNavigator = () => {
         }}
       />
       <Drawer.Screen
+        name="Graveyard Entry"
+        component={Screen.GraveyardEntry}
+        options={{
+          drawerIcon: ({color}) => <Ionicons name="cube" size={22} color={color} />,
+          ...options,
+        }}
+      />
+      <Drawer.Screen
         name="Client"
         component={Screen.Client}
         options={{

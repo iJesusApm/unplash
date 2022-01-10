@@ -13,6 +13,8 @@ import Client from '../views/client';
 import AccesoriesReception from '../views/accesoriesReception';
 import OrderReceptionComplete from '../views/orderReceptionComplete';
 import ReceptionComplete from '../views/receptionComplete';
+import GraveyardEntry from '../views/graveyardEntry';
+import GraveyardInfo from '../views/graveyardInfo';
 export default {
   Client,
   ConfirmOrder,
@@ -29,4 +31,6 @@ export default {
   AccesoriesReception,
   OrderReceptionComplete,
   ReceptionComplete,
+  GraveyardEntry,
+  GraveyardInfo,
 };
