@@ -1,14 +1,14 @@
 /* eslint-disable no-alert */
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState, useEffect} from 'react';
-import {Text, StyleSheet, View, Dimensions, ActivityIndicator, FlatList} from 'react-native';
+import {Text, StyleSheet, View, ActivityIndicator, FlatList} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import HeaderLogin from '../login/components/header';
 import Api from '../../services/Api';
-import Button from '../../components/button';
 import AccesoriesBody from './components/accesoriesBody';
+import ReceptionForm from './components/receptionForm';
 
-const OrderReceptionComplete = ({route, navigation}) => {
+const OrderReceptionComplete = ({route}) => {
   const {orderuuid} = route.params;
   const [orderPo, setOrderPo] = useState('');
   const [orderName, setOrderName] = useState('');
@@ -32,10 +32,6 @@ const OrderReceptionComplete = ({route, navigation}) => {
     }
   }, [orderuuid]);
 
-  const Exit = () => {
-    navigation.goBack();
-  };
-
   return (
     <SafeAreaView style={styles.main}>
       <HeaderLogin />
@@ -51,10 +47,8 @@ const OrderReceptionComplete = ({route, navigation}) => {
           ) : (
             <ActivityIndicator size="large" color={'#EB2C39'} style={styles.isLoading} />
           )}
-          <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-            <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Exit} text={'Go back'} />
-          </View>
         </View>
+        <ReceptionForm itemId={orderuuid} itemOrder={{order_name: orderName, po: orderPo}} />
       </View>
     </SafeAreaView>
   );
@@ -75,22 +69,6 @@ const styles = StyleSheet.create({
   po: {
     fontSize: 20,
     textAlign: 'center',
-  },
-  lblButton: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-    textAlign: 'center',
-  },
-  containButton: {
-    width: Dimensions.get('window').width * 0.35,
-    height: 40,
-    backgroundColor: '#005386',
-    borderRadius: 35,
-    marginVertical: 10,
-    alignSelf: 'center',
-    justifyContent: 'center',
-    marginHorizontal: 5,
   },
   isLoading: {
     marginTop: 15,

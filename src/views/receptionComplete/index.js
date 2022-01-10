@@ -19,8 +19,6 @@ const ReceptionComplete = () => {
     colors: {primary: '#005386', underlineColor: 'transparent'},
     roundness: 30,
   };
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   const Search = () => {
     Api.get(`qr/${qrCode}`)
@@ -46,22 +44,11 @@ const ReceptionComplete = () => {
         <ImageBackground source={require('../../assets/resources/background.png')} style={styles.background}>
           <View style={styles.rowReception}>
             <Ionicons name="cube" size={22} color={'#FFFFFF'} />
-            <Text style={styles.textReception}>Reception</Text>
+            <Text style={styles.textReception}>Total Reception</Text>
           </View>
           <View style={{flex: 1}}>
             <Text style={styles.textQr}>Scan</Text>
-            <View style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'center'}}>
-              <Text style={styles.switchText}>Systems</Text>
-              <Switch
-                trackColor={{false: '#767577', true: '#46C455'}}
-                thumbColor={'#f4f3f4'}
-                ios_backgroundColor="#3e3e3e"
-                onValueChange={toggleSwitch}
-                value={isEnabled}
-              />
-              <Text style={styles.switchText}>Accesories</Text>
-            </View>
-            <Layout isEnabled={isEnabled} />
+            <Layout />
           </View>
           <View style={{flex: 0.5, alignItems: 'center'}}>
             <TextInput
