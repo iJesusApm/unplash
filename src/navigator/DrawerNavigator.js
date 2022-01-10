@@ -41,6 +41,14 @@ const DrawerNavigator = () => {
         }}
       />
       <Drawer.Screen
+        name="Total Reception"
+        component={Screen.ReceptionComplete}
+        options={{
+          drawerIcon: ({color}) => <Ionicons name="cube" size={22} color={color} />,
+          ...options,
+        }}
+      />
+      <Drawer.Screen
         name="Dispatch"
         component={Screen.Dispatch}
         options={{

@@ -11,6 +11,8 @@ import OrderDispatch from '../views/orderDispatch';
 import OrderSearchInformation from '../views/orderSearchInformation';
 import Client from '../views/client';
 import AccesoriesReception from '../views/accesoriesReception';
+import OrderReceptionComplete from '../views/orderReceptionComplete';
+import ReceptionComplete from '../views/receptionComplete';
 export default {
   Client,
   ConfirmOrder,
@@ -25,4 +27,6 @@ export default {
   OrderSearchInformation,
   Reception,
   AccesoriesReception,
+  OrderReceptionComplete,
+  ReceptionComplete,
 };

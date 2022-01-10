@@ -18,6 +18,7 @@ const AppNavigation = () => {
       <Stack.Screen name="OrderInformation" component={Screen.OrderInformation} options={options} />
       <Stack.Screen name="OrderSearchInformation" component={Screen.OrderSearchInformation} options={options} />
       <Stack.Screen name="ConfirmOrder" component={Screen.ConfirmOrder} options={options} />
+      <Stack.Screen name="OrderReceptionComplete" component={Screen.OrderReceptionComplete} options={options} />
     </Stack.Navigator>
   );
 };
