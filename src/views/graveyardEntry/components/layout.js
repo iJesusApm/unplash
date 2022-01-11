@@ -13,7 +13,7 @@ const Layout = ({isEnabled}) => {
       Api.get(`graveyard/qr/${e.data}`)
         .then(res => {
           if (res.status === 200) {
-            navigation.navigate('Order', {
+            navigation.navigate('GraveyardInfo', {
               order: res.response.data,
             });
           } else {
