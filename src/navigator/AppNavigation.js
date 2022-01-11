@@ -22,6 +22,7 @@ const AppNavigation = () => {
       <Stack.Screen name="GraveyardInfo" component={Screen.GraveyardInfo} options={options} />
       <Stack.Screen name="GraveyardEntryForm" component={Screen.GraveyardEntryForm} options={options} />
       <Stack.Screen name="ConfirmGraveyard" component={Screen.ConfirmGraveyard} options={options} />
+      <Stack.Screen name="GraveyardSignature" component={Screen.GraveyardSignature} options={options} />
     </Stack.Navigator>
   );
 };

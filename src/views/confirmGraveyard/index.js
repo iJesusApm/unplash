@@ -21,8 +21,8 @@ const ConfirmGraveyard = ({route}) => {
       <ImageBackground source={require('../../assets/resources/background.png')} style={styles.background}>
         <View>
           <Text style={styles.title}>Graveyard</Text>
-          <Text style={styles.name}>{graveyard.po_number}</Text>
-          <Text style={styles.po}>Your Graveyard ID is: {graveyard.id}</Text>
+          <Text style={styles.name}>PO Number {graveyard.po_number}</Text>
+          <Text style={styles.po}>Your Graveyard ID is {graveyard.id}</Text>
         </View>
         <View style={{alignItems: 'center', paddingTop: 20, flex: 1}}>
           <Image source={require('../../assets/resources/ok.png')} style={styles.image} />

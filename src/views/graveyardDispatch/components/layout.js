@@ -9,21 +9,20 @@ const Layout = () => {
   const navigation = useNavigation();
 
   const onSuccess = e => {
-    if (e.data) {
-      Api.get(`graveyard/qr/${e.data}`)
-        .then(res => {
-          if (res.status === 200) {
-            navigation.navigate('GraveyardInfo', {
-              order: res.response.data,
-            });
-          } else {
-            alert(`${res.messaje}`);
-          }
-        })
-        .catch(() => {
-          alert('An error has occurred. QR code no valid.');
-        });
-    }
+    Api.get(`graveyard/qr/${e.data}`)
+      .then(res => {
+        if (res.status === 200) {
+          navigation.navigate('GraveyardInfo', {
+            order: res.response.data,
+            dispatch: true,
+          });
+        } else {
+          alert(`${res.messaje}`);
+        }
+      })
+      .catch(() => {
+        alert('An error has occurred. QR code no valid.');
+      });
   };
   return <QRCodeScanner onRead={onSuccess} reactivate={true} reactivateTimeout={5000} showMarker={true} cameraStyle={styles.camera} />;
 };

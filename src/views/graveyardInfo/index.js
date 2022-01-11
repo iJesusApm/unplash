@@ -5,9 +5,10 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import HeaderLogin from '../login/components/header';
 import SystemBody from './components/systemBody';
 import Form from './components/form';
+import Button from '../../components/button';
 
 const GraveyardInfo = ({route, navigation}) => {
-  const {order, entry = false} = route.params;
+  const {order, dispatch = false} = route.params;
   const [graveyardItem, setGraveyardItem] = useState(null);
   const orderPo = order.po_number;
 
@@ -17,16 +18,41 @@ const GraveyardInfo = ({route, navigation}) => {
     }
   }, [order]);
 
+  const Exit = () => {
+    navigation.goBack();
+  };
+
+  const Signature = () => {
+    navigation.navigate('GraveyardSignature', {
+      // order: order,
+      // item: uuid,
+    });
+  };
+
   return (
     <SafeAreaView style={styles.main}>
       <HeaderLogin />
       <ScrollView style={styles.main}>
         <Text style={styles.title}>Graveyard</Text>
         <Text style={styles.po}>{orderPo}</Text>
-        <View style={{flex: 1, marginTop: 5}}>
-          <SystemBody data={graveyardItem ? graveyardItem : null} />
-        </View>
-        <Form graveyardItem={graveyardItem} />
+        {!dispatch ? (
+          <>
+            <View style={{flex: 1, marginTop: 5}}>
+              <SystemBody data={graveyardItem ? graveyardItem : null} />
+            </View>
+            <Form graveyardItem={graveyardItem} />
+          </>
+        ) : (
+          <>
+            <View style={{flex: 1, marginTop: 5}}>
+              <SystemBody data={graveyardItem ? graveyardItem : null} />
+            </View>
+            <View style={{flexDirection: 'row', marginBottom: 5}}>
+              <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Exit} text={'Go back'} />
+              <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Signature} text={'Signature'} />
+            </View>
+          </>
+        )}
       </ScrollView>
     </SafeAreaView>
   );

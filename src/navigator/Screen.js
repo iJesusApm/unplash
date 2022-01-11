@@ -17,6 +17,8 @@ import GraveyardEntry from '../views/graveyardEntry';
 import GraveyardInfo from '../views/graveyardInfo';
 import GraveyardEntryForm from '../views/graveyardEntryForm';
 import ConfirmGraveyard from '../views/confirmGraveyard';
+import GraveyardDispatch from '../views/graveyardDispatch';
+import GraveyardSignature from '../views/graveyardSignature';
 export default {
   Client,
   ConfirmOrder,
@@ -37,4 +39,6 @@ export default {
   GraveyardEntryForm,
   GraveyardInfo,
   ConfirmGraveyard,
+  GraveyardDispatch,
+  GraveyardSignature,
 };
