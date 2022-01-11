@@ -7,7 +7,7 @@ import {TextInput} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import HeaderWhite from '../../components/headerWhite';
-import Layout from './components/layout';
+// import Layout from './components/layout';
 
 import Api from '../../services/Api';
 import Button from '../../components/button';
@@ -21,11 +21,12 @@ const GraveyardDispatch = () => {
   };
 
   const Search = () => {
-    Api.get(`graveyard/qr/${qrCode}`)
+    Api.get(`graveyard/${qrCode}`)
       .then(res => {
         if (res.status === 200) {
+          // console.log(res.graveyard);
           navigation.navigate('GraveyardInfo', {
-            order: res.response.data,
+            order: res.graveyard,
             dispatch: true,
           });
         } else {
@@ -47,11 +48,12 @@ const GraveyardDispatch = () => {
             <Ionicons name="car-outline" size={22} color={'#FFFFFF'} />
             <Text style={styles.textReception}>Graveyard Dispatch</Text>
           </View>
-          <View style={{flex: 1}}>
+          {/* <View style={{flex: 1}}>
             <Text style={styles.textQr}>Scan</Text>
             <Layout />
-          </View>
-          <View style={{flex: 0.5, alignItems: 'center'}}>
+          </View> */}
+          <View style={{flex: 0.5, alignItems: 'center', justifyContent: 'center'}}>
+            <Text style={styles.label}>Graveyard Id</Text>
             <TextInput
               value={qrCode}
               onChangeText={text => setqrCode(text)}
@@ -96,6 +98,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   switchText: {fontSize: 14, color: '#FFFFFF', fontWeight: 'bold', textAlign: 'center', marginHorizontal: 15},
+  label: {fontSize: 18, color: '#FFFFFF', letterSpacing: 2, marginVertical: 10},
 });
 
 export default GraveyardDispatch;

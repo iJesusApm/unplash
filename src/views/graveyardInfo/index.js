@@ -1,11 +1,14 @@
+/* eslint-disable no-alert */
 /* eslint-disable react-native/no-inline-styles */
 import React, {useEffect, useState} from 'react';
 import {Text, StyleSheet, View, ScrollView, Dimensions} from 'react-native';
+import moment from 'moment';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import HeaderLogin from '../login/components/header';
 import SystemBody from './components/systemBody';
 import Form from './components/form';
 import Button from '../../components/button';
+import Api from '../../services/Api';
 
 const GraveyardInfo = ({route, navigation}) => {
   const {order, dispatch = false} = route.params;
@@ -23,10 +26,29 @@ const GraveyardInfo = ({route, navigation}) => {
   };
 
   const Signature = () => {
-    navigation.navigate('GraveyardSignature', {
-      // order: order,
-      // item: uuid,
-    });
+    // navigation.navigate('GraveyardSignature', {
+    //   order: order,
+    //   item: uuid,
+    // });
+    const item = {
+      signature: '-',
+      dispatch_date: moment(new Date()).format('YYYY-MM-DD'),
+    };
+    Api.post(`graveyard/${graveyardItem.id}/dispatch`, item)
+      .then(async res => {
+        if (res.status === 200) {
+          navigation.navigate('ConfirmGraveyard', {
+            graveyard: graveyardItem,
+            routeToNavigate: 'Graveyard Dispatch',
+          });
+        } else {
+          alert(`${res.messaje}`);
+        }
+      })
+      .catch(err => {
+        const message = err.response.data.message ? err.response.data.message : err.response.data.error;
+        alert(message);
+      });
   };
 
   return (
@@ -47,9 +69,9 @@ const GraveyardInfo = ({route, navigation}) => {
             <View style={{flex: 1, marginTop: 5}}>
               <SystemBody data={graveyardItem ? graveyardItem : null} />
             </View>
-            <View style={{flexDirection: 'row', marginBottom: 5}}>
+            <View style={{flexDirection: 'row', alignSelf: 'center'}}>
               <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Exit} text={'Go back'} />
-              <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Signature} text={'Signature'} />
+              <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Signature} text={'Confirm'} />
             </View>
           </>
         )}
@@ -88,6 +110,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     alignSelf: 'center',
     justifyContent: 'center',
+    marginHorizontal: 5,
   },
 });
 export default GraveyardInfo;
