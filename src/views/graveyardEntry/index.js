@@ -37,7 +37,7 @@ const GraveyardEntry = () => {
   };
 
   const Form = () => {
-    navigation.navigate('GraveyardEntryForm');
+    navigation.push('GraveyardEntryForm');
   };
 
   return (

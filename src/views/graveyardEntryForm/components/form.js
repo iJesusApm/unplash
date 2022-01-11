@@ -95,7 +95,7 @@ const Form = ({}) => {
       configuration: state.configuration,
       po_number: state.po_number,
       isReported: state.isReported,
-      create_user_id: idUser,
+      create_user_id: idUser._j,
       graveyard_category_id: state.graveyard_category_id,
       graveyard_color_id: state.graveyard_color_id,
       graveyard_color_glass_id: state.graveyard_color_glass_id,
@@ -105,7 +105,7 @@ const Form = ({}) => {
         if (res) {
           setIsLoading(false);
           navigation.navigate('ConfirmGraveyard', {
-            // order: orderItem,
+            graveyard: res.graveyard,
             routeToNavigate: 'Graveyard Entry',
           });
         }
@@ -245,7 +245,7 @@ const Form = ({}) => {
             ))}
           </Picker>
         </View>
-        <Text style={styles.titleInput}>Graveyard Color</Text>
+        <Text style={styles.titleInput}>Frame Color</Text>
         <View style={styles.body}>
           <Picker
             mode="dropdown"
@@ -258,7 +258,7 @@ const Form = ({}) => {
             ))}
           </Picker>
         </View>
-        <Text style={styles.titleInput}>Graveyard Color Glass</Text>
+        <Text style={styles.titleInput}>Glass Color</Text>
         <View style={styles.body}>
           <Picker
             mode="dropdown"

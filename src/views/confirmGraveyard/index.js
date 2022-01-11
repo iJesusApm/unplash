@@ -7,7 +7,7 @@ import HeaderWhiteWithoutButton from '../../components/headerWhiteWithoutButton'
 import Button from '../../components/button';
 
 const ConfirmGraveyard = ({route}) => {
-  const {order, routeToNavigate} = route.params;
+  const {graveyard, routeToNavigate} = route.params;
   const navigation = useNavigation();
 
   const Confirm = () => {
@@ -21,8 +21,8 @@ const ConfirmGraveyard = ({route}) => {
       <ImageBackground source={require('../../assets/resources/background.png')} style={styles.background}>
         <View>
           <Text style={styles.title}>Graveyard</Text>
-          {/* <Text style={styles.name}>{order.order_name}</Text>
-          <Text style={styles.po}>{order.po}</Text> */}
+          <Text style={styles.name}>{graveyard.po_number}</Text>
+          <Text style={styles.po}>Your Graveyard ID is: {graveyard.id}</Text>
         </View>
         <View style={{alignItems: 'center', paddingTop: 20, flex: 1}}>
           <Image source={require('../../assets/resources/ok.png')} style={styles.image} />
