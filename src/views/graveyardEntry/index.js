@@ -36,6 +36,10 @@ const GraveyardEntry = () => {
       });
   };
 
+  const Form = () => {
+    navigation.navigate('GraveyardEntryForm');
+  };
+
   return (
     <SafeAreaView style={styles.main}>
       <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
@@ -60,7 +64,10 @@ const GraveyardEntry = () => {
               maxLength={76}
               left={<TextInput.Icon name={'magnify'} color={'#005386'} size={30} />}
             />
-            <Button titleStyle={styles.loginText} touchStyle={styles.loginContainer} action={Search} text={'Search'} />
+            <View style={{flexDirection: 'row'}}>
+              <Button titleStyle={styles.loginText} touchStyle={styles.loginContainer} action={Form} text={'Add manually'} />
+              <Button titleStyle={styles.loginText} touchStyle={styles.loginContainer} action={Search} text={'Search'} />
+            </View>
           </View>
         </ImageBackground>
       </ScrollView>
@@ -93,6 +100,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     alignSelf: 'center',
     justifyContent: 'center',
+    marginHorizontal: 5,
   },
   switchText: {fontSize: 14, color: '#FFFFFF', fontWeight: 'bold', textAlign: 'center', marginHorizontal: 15},
 });

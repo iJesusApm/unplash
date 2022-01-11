@@ -15,6 +15,8 @@ import OrderReceptionComplete from '../views/orderReceptionComplete';
 import ReceptionComplete from '../views/receptionComplete';
 import GraveyardEntry from '../views/graveyardEntry';
 import GraveyardInfo from '../views/graveyardInfo';
+import GraveyardEntryForm from '../views/graveyardEntryForm';
+import ConfirmGraveyard from '../views/confirmGraveyard';
 export default {
   Client,
   ConfirmOrder,
@@ -32,5 +34,7 @@ export default {
   OrderReceptionComplete,
   ReceptionComplete,
   GraveyardEntry,
+  GraveyardEntryForm,
   GraveyardInfo,
+  ConfirmGraveyard,
 };

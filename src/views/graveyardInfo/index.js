@@ -3,10 +3,8 @@ import React, {useEffect, useState} from 'react';
 import {Text, StyleSheet, View, ScrollView, Dimensions} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import HeaderLogin from '../login/components/header';
-import Button from '../../components/button';
 import SystemBody from './components/systemBody';
-// import ReceptionForm from './components/receptionForm';
-// import AlreadyText from '../../components/alreadyText';
+import Form from './components/form';
 
 const GraveyardInfo = ({route, navigation}) => {
   const {order, entry = false} = route.params;
@@ -19,21 +17,17 @@ const GraveyardInfo = ({route, navigation}) => {
     }
   }, [order]);
 
-  const Exit = () => {
-    navigation.goBack();
-  };
-
   return (
     <SafeAreaView style={styles.main}>
       <HeaderLogin />
       <ScrollView style={styles.main}>
-        <Text style={styles.title}>Order</Text>
+        <Text style={styles.title}>Graveyard</Text>
         <Text style={styles.po}>{orderPo}</Text>
         <View style={{flex: 1, marginTop: 5}}>
           <SystemBody data={graveyardItem ? graveyardItem : null} />
         </View>
+        <Form graveyardItem={graveyardItem} />
       </ScrollView>
-      <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Exit} text={'Go back'} />
     </SafeAreaView>
   );
 };
