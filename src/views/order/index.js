@@ -2,7 +2,6 @@
 import React, {useEffect, useState} from 'react';
 import {Text, StyleSheet, View, ScrollView, Dimensions} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-// import FooterSplash from '../../components/footer';
 import HeaderLogin from '../login/components/header';
 import ReceptionForm from './components/receptionForm';
 import SystemBody from './components/systemBody';
@@ -10,11 +9,12 @@ import Button from '../../components/button';
 import AlreadyText from '../../components/alreadyText';
 
 const Order = ({route, navigation}) => {
-  const {order, item, fromReception = false} = route.params;
+  const {order, item, fromReception = false, total} = route.params;
   const [isRecived, setisRecived] = useState(false);
   const system = order;
   const orderName = order.type.order.order_master.order_name;
   const orderPo = order.type.order.order_master.po;
+  const [validate, setValidate] = useState(false);
 
   useEffect(() => {
     if (order.recived_date) {
@@ -26,6 +26,11 @@ const Order = ({route, navigation}) => {
     navigation.goBack();
   };
 
+  const Component = () => {
+    setValidate(true);
+    setisRecived(!isRecived);
+  };
+
   return (
     <SafeAreaView style={styles.main}>
       <HeaderLogin />
@@ -33,13 +38,19 @@ const Order = ({route, navigation}) => {
         <Text style={styles.title}>Order</Text>
         <Text style={styles.name}>{orderName}</Text>
         <Text style={styles.po}>{orderPo}</Text>
-        <View style={{flex: 1, marginTop: 25}}>
+        <View style={{flex: 1, marginTop: 10}}>
           <SystemBody data={system ? system : null} />
+          {isRecived && total > 0 ? (
+            <>
+              <Text style={styles.fontStyle}>Component with remaining quantity of {total}</Text>
+              <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Component} text={'Confirm'} />
+            </>
+          ) : null}
           {isRecived ? (
             <AlreadyText text={'This order has already been received'} />
           ) : (
             <>
-              {fromReception ? (
+              {validate ? (
                 <ReceptionForm itemId={item} itemOrder={order} />
               ) : (
                 <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Exit} text={'Go back'} />
@@ -48,7 +59,6 @@ const Order = ({route, navigation}) => {
           )}
         </View>
       </ScrollView>
-      {/* <FooterSplash /> */}
     </SafeAreaView>
   );
 };
@@ -84,5 +94,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'center',
   },
+  fontStyle: {color: 'red', textAlign: 'center', fontSize: 15, fontWeight: 'bold', marginTop: 10},
 });
 export default Order;

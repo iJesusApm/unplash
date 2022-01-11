@@ -27,10 +27,24 @@ const Reception = () => {
       Api.get(`qr/${qrCode}/accessories`)
         .then(res => {
           if (res.status === 200) {
+            let acum = 0;
+            res.order.orders.map(item => {
+              if (item.accesories.length > 0 && item.accesories) {
+                item.accesories.map(c => {
+                  if (c.items.length > 0 && c.items) {
+                    c.items.map(e => {
+                      if (e.count_ordered) {
+                        acum += parseInt(e.count_ordered);
+                      }
+                    });
+                  }
+                });
+              }
+            });
             navigation.navigate('AccesoriesReception', {
               order: res.order,
-              itemId: res.order.id,
-              total: res.response.total ? res.response.total : null,
+              itemId: res.order.orders[0] ? res.order.orders[0].id : res.order.id,
+              total: acum,
             });
           } else {
             alert(`${res.messaje}`);
@@ -47,6 +61,7 @@ const Reception = () => {
               order: res.item,
               item: res.item.id,
               fromReception: true,
+              total: res.item.count_ordered,
             });
           } else {
             alert(`${res.messaje}`);
