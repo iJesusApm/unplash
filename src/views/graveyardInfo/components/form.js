@@ -31,7 +31,6 @@ const Form = ({graveyardItem}) => {
   const getCategories = () => {
     Api.get('graveyard/categories/all')
       .then(res => {
-        console.log(res.categories);
         if (res.status === 200) {
           setState({categories: res.categories});
         }
@@ -44,7 +43,6 @@ const Form = ({graveyardItem}) => {
   const getColors = () => {
     Api.get('graveyard/colors/all')
       .then(res => {
-        console.log(res);
         if (res.status === 200) {
           setState({colors: res.colors});
         }
@@ -88,7 +86,6 @@ const Form = ({graveyardItem}) => {
     Api.post('graveyard/create', data)
       .then(async res => {
         if (res) {
-          console.log(res);
           setIsLoading(false);
           navigation.navigate('ConfirmGraveyard', {
             // order: orderItem,
