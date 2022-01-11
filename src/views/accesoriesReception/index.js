@@ -10,7 +10,7 @@ import ReceptionForm from '../order/components/receptionForm';
 import AlreadyText from '../../components/alreadyText';
 
 const AccesoriesReception = ({route, navigation}) => {
-  const {order, itemId} = route.params;
+  const {order, itemId, total} = route.params;
   const [type, setType] = useState([]);
   const [isEmpty, setisEmpty] = useState(false);
   const orderName = order.order_name;
@@ -23,14 +23,23 @@ const AccesoriesReception = ({route, navigation}) => {
       setisRecived(true);
     }
     if (order) {
-      if (order.orders[0].accesories.length > 0) {
-        setType(order.orders[0].accesories);
-      }
+      let array = [];
+      order.orders.map(item => {
+        if (item.accesories.length > 0 && item.accesories) {
+          array.push(item.accesories[0]);
+        }
+      });
+      setType(array);
     }
   }, [order]);
 
   const Exit = () => {
     navigation.goBack();
+  };
+
+  const Component = () => {
+    setisConfirm(!isConfirm);
+    setisRecived(!isRecived);
   };
 
   return (
@@ -43,12 +52,18 @@ const AccesoriesReception = ({route, navigation}) => {
         <View style={{flex: 1, marginTop: 10}}>
           {type.length > 0 ? (
             <>
-              <FlatList data={type} renderItem={({item}) => <AccesoriesBody data={item} />} keyExtractor={item => item.id.toString()} />
+              <FlatList data={type} renderItem={({item}) => <AccesoriesBody data={item} />} keyExtractor={item => item.id} />
             </>
           ) : (
             <>{isEmpty ? <SystemBody data={type} /> : <ActivityIndicator size="large" color={'#EB2C39'} style={styles.isLoading} />}</>
           )}
         </View>
+        {isRecived && total > 0 ? (
+          <>
+            <Text style={styles.fontStyle}>Component with remaining quantity of {total}</Text>
+            <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Component} text={'Confirm'} />
+          </>
+        ) : null}
         {isRecived ? (
           <AlreadyText text={'This order has already been received'} />
         ) : (
@@ -108,5 +123,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: '8%',
   },
+  fontStyle: {color: 'red', textAlign: 'center', fontSize: 15, fontWeight: 'bold'},
 });
 export default AccesoriesReception;

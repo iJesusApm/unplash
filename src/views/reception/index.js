@@ -30,6 +30,7 @@ const Reception = () => {
             navigation.navigate('AccesoriesReception', {
               order: res.order,
               itemId: res.order.id,
+              total: res.response.total ? res.response.total : null,
             });
           } else {
             alert(`${res.messaje}`);
