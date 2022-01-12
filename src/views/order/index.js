@@ -50,7 +50,7 @@ const Order = ({route, navigation}) => {
             <AlreadyText text={'This order has already been received'} />
           ) : (
             <>
-              {validate ? (
+              {fromReception || validate ? (
                 <ReceptionForm itemId={item} itemOrder={order} />
               ) : (
                 <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Exit} text={'Go back'} />
