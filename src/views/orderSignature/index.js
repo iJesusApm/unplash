@@ -5,14 +5,14 @@ import HeaderWhiteWithoutButton from '../../components/headerWhiteWithoutButton'
 import SystemBody from './components/systemBody';
 
 const OrderSignature = ({route}) => {
-  const {order, item} = route.params;
+  const {order, item, complete = false} = route.params;
   return (
     <SafeAreaView style={styles.main}>
       <ImageBackground source={require('../../assets/resources/background.png')} style={styles.background}>
         <HeaderWhiteWithoutButton />
         <Text style={styles.title}>Order</Text>
         <Text style={styles.name}>{order.order_name}</Text>
-        <SystemBody itemId={item} itemOrder={order} />
+        <SystemBody itemId={item} itemOrder={order} complete={complete} />
       </ImageBackground>
     </SafeAreaView>
   );

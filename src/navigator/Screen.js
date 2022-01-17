@@ -20,6 +20,8 @@ import ConfirmGraveyard from '../views/confirmGraveyard';
 import GraveyardDispatch from '../views/graveyardDispatch';
 import GraveyardSignature from '../views/graveyardSignature';
 import GraveyardSearch from '../views/graveyardSearch';
+import DispatchComplete from '../views/dispatchComplete';
+import OrderDispatchComplete from '../views/orderDispatchComplete';
 export default {
   Client,
   ConfirmOrder,
@@ -43,4 +45,6 @@ export default {
   GraveyardDispatch,
   GraveyardSignature,
   GraveyardSearch,
+  DispatchComplete,
+  OrderDispatchComplete,
 };

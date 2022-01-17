@@ -54,7 +54,7 @@ const CustomDrawer = props => {
               title="Dispatch"
               left={() => <Ionicons name="car-outline" size={iconProps.size} color={iconProps.color} />}>
               <List.Item titleStyle={styles.textSubitem} title="Partial" onPress={() => HandleClick('Dispatch')} />
-              <List.Item titleStyle={styles.textSubitem} title="Total" onPress={() => HandleClick('Dispatch')} />
+              <List.Item titleStyle={styles.textSubitem} title="Total" onPress={() => HandleClick('Total Dispatch')} />
             </List.Accordion>
             <List.Accordion
               theme={{colors: {text: '#FFF'}}}

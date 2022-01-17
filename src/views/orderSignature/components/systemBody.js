@@ -9,25 +9,29 @@ import Api from '../../../services/Api';
 
 import SignatureCapture from 'react-native-signature-capture';
 
-const SystemBody = ({itemId, itemOrder}) => {
+const SystemBody = ({itemId, itemOrder, complete}) => {
   const navigation = useNavigation();
   const uuid = itemId;
   const [isLoading, setIsLoading] = useState(false);
   const sign = createRef();
 
   const HandlePress = base64Image => {
+    let route = 'Dispatch';
     setIsLoading(true);
     const item = {
       signature: base64Image,
       dispatch_date: moment(new Date()).format('YYYY-MM-DD'),
     };
+    if (complete) {
+      route = 'Total Dispatch';
+    }
     Api.post(`dispatch/order/${uuid}`, item)
       .then(async res => {
         if (res.status === 200) {
           setIsLoading(false);
           navigation.navigate('ConfirmOrder', {
             order: itemOrder,
-            routeToNavigate: 'Dispatch',
+            routeToNavigate: route,
           });
         } else {
           alert(`${res.messaje}`);
