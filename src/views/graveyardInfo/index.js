@@ -11,7 +11,7 @@ import Button from '../../components/button';
 import Api from '../../services/Api';
 
 const GraveyardInfo = ({route, navigation}) => {
-  const {order, dispatch = false} = route.params;
+  const {order, dispatch = false, justInfo = false} = route.params;
   const [graveyardItem, setGraveyardItem] = useState(null);
   const orderPo = order.po_number;
 
@@ -71,7 +71,7 @@ const GraveyardInfo = ({route, navigation}) => {
             </View>
             <View style={{flexDirection: 'row', alignSelf: 'center'}}>
               <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Exit} text={'Go back'} />
-              <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Signature} text={'Confirm'} />
+              {justInfo ? null : <Button titleStyle={styles.lblButton} touchStyle={styles.containButton} action={Signature} text={'Confirm'} />}
             </View>
           </>
         )}

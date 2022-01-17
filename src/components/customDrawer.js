@@ -65,6 +65,7 @@ const CustomDrawer = props => {
               left={() => <Ionicons name="pricetag-outline" size={iconProps.size} color={iconProps.color} />}>
               <List.Item titleStyle={styles.textSubitem} title="Entry" onPress={() => HandleClick('Graveyard Entry')} />
               <List.Item titleStyle={styles.textSubitem} title="Dispatch" onPress={() => HandleClick('Graveyard Dispatch')} />
+              <List.Item titleStyle={styles.textSubitem} title="Search" onPress={() => HandleClick('Graveyard Search')} />
             </List.Accordion>
           </List.Section>
           <TouchableOpacity onPress={() => HandleClick('Search')}>
