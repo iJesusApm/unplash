@@ -18,7 +18,6 @@ const OrderDispatchComplete = ({route, navigation}) => {
     if (orderuuid) {
       Api.get(`orders/get-order/${orderuuid}`)
         .then(res => {
-          console.log(res.order);
           if (res.status === 200) {
             setOrderName(res.order.order_name);
             setOrderPo(res.order.po);
