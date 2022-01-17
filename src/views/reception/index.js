@@ -43,7 +43,7 @@ const Reception = () => {
             });
             navigation.navigate('AccesoriesReception', {
               order: res.order,
-              itemId: res.order.orders[0] ? res.order.orders[0].id : res.order.id,
+              itemId: res.order.orders[0] ? res.order.orders[0].uuid : res.order.uuid,
               total: acum,
             });
           } else {

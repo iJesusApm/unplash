@@ -24,17 +24,19 @@ const ReceptionForm = ({itemId, itemOrder, accesories = false}) => {
 
   const HandlePress = () => {
     setIsLoading(true);
+    let url = `reception/order/system/item/${id}`;
+    let orderItem = {};
     const item = {
       location: location.trim(),
       receive_date: moment(date, 'DD-MM-YYYY').format('YYYY-MM-DD[T]HH:mm:ss'),
     };
-    let orderItem = {};
     if (accesories) {
       orderItem = {order_name: itemOrder.order_name, po: itemOrder.po};
+      url = `reception/order/${id}/accesories`;
     } else {
       orderItem = {order_name: itemOrder.type.order.order_master.order_name, po: itemOrder.type.order.order_master.po};
     }
-    Api.post(`reception/order/system/item/${id}`, item)
+    Api.post(url, item)
       .then(async res => {
         if (res) {
           setIsLoading(false);
