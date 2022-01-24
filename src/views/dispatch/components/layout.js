@@ -11,7 +11,7 @@ const Layout = ({isEnabled}) => {
   const onSuccess = e => {
     if (isEnabled) {
       if (e.data) {
-        Api.get(`qr/${e.data}/accessories`)
+        Api.get(`qr/${e.data}/accessories/dispatch`)
           .then(res => {
             if (res.status === 200) {
               navigation.navigate('OrderDispatch', {

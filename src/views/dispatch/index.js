@@ -24,7 +24,7 @@ const Dispatch = () => {
 
   const Search = () => {
     if (isEnabled) {
-      Api.get(`qr/${qrCode}/accessories`)
+      Api.get(`qr/${qrCode}/accessories/dispatch`)
         .then(res => {
           if (res.status === 200) {
             navigation.navigate('OrderDispatch', {
