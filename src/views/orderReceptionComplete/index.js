@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState, useEffect} from 'react';
-import {Text, StyleSheet, View, ActivityIndicator, FlatList} from 'react-native';
+import {Text, StyleSheet, View, ActivityIndicator, FlatList, ScrollView} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import HeaderLogin from '../login/components/header';
 import Api from '../../services/Api';
@@ -39,7 +39,7 @@ const OrderReceptionComplete = ({route}) => {
         <Text style={styles.title}>Order</Text>
         <Text style={styles.name}>{orderName}</Text>
         <Text style={styles.po}>{orderPo}</Text>
-        <View style={{flex: 1, marginTop: 10}}>
+        <ScrollView style={{flex: 1, marginTop: 10}}>
           {type.length > 0 ? (
             <>
               <FlatList data={type} renderItem={({item}) => <AccesoriesBody data={item} />} keyExtractor={item => item.id.toString()} />
@@ -47,8 +47,8 @@ const OrderReceptionComplete = ({route}) => {
           ) : (
             <ActivityIndicator size="large" color={'#EB2C39'} style={styles.isLoading} />
           )}
-        </View>
-        <ReceptionForm itemId={orderuuid} itemOrder={{order_name: orderName, po: orderPo}} />
+          <ReceptionForm itemId={orderuuid} itemOrder={{order_name: orderName, po: orderPo}} />
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
