@@ -8,7 +8,7 @@ const AccesoriesBody = ({data}) => {
   const [expand, setExpand] = useState(false);
   const flatListSeparator = () => <View style={styles.separator} />;
 
-  const systems = data.items ? data.items : [];
+  const systems = data.items_to_recive ? data.items_to_recive : [];
 
   const HeaderList = () => (
     <View style={styles.mainHeader}>
@@ -37,7 +37,10 @@ const AccesoriesBody = ({data}) => {
               />
             </>
           ) : (
-            <Ionicons name="close-circle-outline" size={30} color={'#EB2C39'} />
+            <View style={{alignItems: 'center'}}>
+              <Ionicons name="close-circle-outline" size={30} color={'#EB2C39'} />
+              <Text style={{fontSize: 14, fontWeight: 'bold'}}>All items are recived</Text>
+            </View>
           )}
         </View>
       ) : null}
