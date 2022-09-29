@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "Usahi.app"
-               BlueprintName = "Usahi"
-               ReferencedContainer = "container:Usahi.xcodeproj">
+               BuildableName = "unplash.app"
+               BlueprintName = "unplash"
+               ReferencedContainer = "container:unplash.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "UsahiTests.xctest"
-               BlueprintName = "UsahiTests"
-               ReferencedContainer = "container:Usahi.xcodeproj">
+               BuildableName = "unplashTests.xctest"
+               BlueprintName = "unplashTests"
+               ReferencedContainer = "container:unplash.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Usahi.app"
-            BlueprintName = "Usahi"
-            ReferencedContainer = "container:Usahi.xcodeproj">
+            BuildableName = "unplash.app"
+            BlueprintName = "unplash"
+            ReferencedContainer = "container:unplash.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Usahi.app"
-            BlueprintName = "Usahi"
-            ReferencedContainer = "container:Usahi.xcodeproj">
+            BuildableName = "unplash.app"
+            BlueprintName = "unplash"
+            ReferencedContainer = "container:unplash.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

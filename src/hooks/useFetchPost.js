@@ -1,5 +1,5 @@
 import React, {createContext, useState, useEffect} from 'react';
-import {unsplash} from '../services/api';
+import {unsplash} from '../services/Api';
 
 // create context
 const PostContext = createContext();
