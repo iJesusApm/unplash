@@ -4,6 +4,8 @@ import {useRoute, useNavigation} from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Avatar} from 'react-native-elements';
 
+import * as Animatable from 'react-native-animatable';
+
 import Overlay from '../../components/overlay';
 
 const Post = () => {
@@ -34,7 +36,8 @@ const Post = () => {
         <Overlay gradientStyle={styles.overlay}>
           <Text style={styles.title}>Lorem ipsum</Text>
           <Text style={styles.subtitle}>{post.likes} votos</Text>
-          <View style={styles.profile}>
+
+          <Animatable.View animation="fadeInLeftBig" delay={700} duration={350} style={styles.profile}>
             <Avatar
               rounded
               source={{
@@ -48,7 +51,7 @@ const Post = () => {
                 <Text style={styles.profileGoTo}>View Profile</Text>
               </TouchableOpacity>
             </View>
-          </View>
+          </Animatable.View>
         </Overlay>
       </View>
       <TouchableOpacity onPress={goBack} style={styles.backBtn}>
