@@ -11,7 +11,6 @@ const Post = () => {
   const route = useRoute();
 
   const {post, index} = route.params;
-  //   console.log(post, index);
 
   const goBack = () => {
     navigation.goBack();
