@@ -33,6 +33,7 @@
 		1FF345B792484E148C5E6909 /* GOTHICB.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 0631BE43105741D897DF6875 /* GOTHICB.TTF */; };
 		F5A16F4E7F5D42949281B755 /* GOTHICBI.TTF in Resources */ = {isa = PBXBuildFile; fileRef = F33D92F4CC4849638392A0C4 /* GOTHICBI.TTF */; };
 		1ED9A86095F740C381F4FA41 /* GOTHICI.TTF in Resources */ = {isa = PBXBuildFile; fileRef = AEFEC42807EC49E593F8F9BF /* GOTHICI.TTF */; };
+		26EF18AB462C4CD6A40DA5C0 /* Museo Sans.otf in Resources */ = {isa = PBXBuildFile; fileRef = CA1308ADEDAD46ADA47E1B50 /* Museo Sans.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		0631BE43105741D897DF6875 /* GOTHICB.TTF */ = {isa = PBXFileReference; name = "GOTHICB.TTF"; path = "../src/assets/fonts/GOTHICB.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		F33D92F4CC4849638392A0C4 /* GOTHICBI.TTF */ = {isa = PBXFileReference; name = "GOTHICBI.TTF"; path = "../src/assets/fonts/GOTHICBI.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		AEFEC42807EC49E593F8F9BF /* GOTHICI.TTF */ = {isa = PBXFileReference; name = "GOTHICI.TTF"; path = "../src/assets/fonts/GOTHICI.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CA1308ADEDAD46ADA47E1B50 /* Museo Sans.otf */ = {isa = PBXFileReference; name = "Museo Sans.otf"; path = "../src/assets/fonts/Museo Sans.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 				0631BE43105741D897DF6875 /* GOTHICB.TTF */,
 				F33D92F4CC4849638392A0C4 /* GOTHICBI.TTF */,
 				AEFEC42807EC49E593F8F9BF /* GOTHICI.TTF */,
+				CA1308ADEDAD46ADA47E1B50 /* Museo Sans.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				1FF345B792484E148C5E6909 /* GOTHICB.TTF in Resources */,
 				F5A16F4E7F5D42949281B755 /* GOTHICBI.TTF in Resources */,
 				1ED9A86095F740C381F4FA41 /* GOTHICI.TTF in Resources */,
+				26EF18AB462C4CD6A40DA5C0 /* Museo Sans.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
