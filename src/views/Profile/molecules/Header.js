@@ -1,10 +1,11 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {Avatar} from 'react-native-elements';
+import * as Animatable from 'react-native-animatable';
 
 const Header = ({fullName, picture, bio}) => {
   return (
-    <View style={styles.container}>
+    <Animatable.View animation="zoomIn" delay={700} duration={350} style={styles.container}>
       <View style={styles.profile}>
         <Avatar
           rounded
@@ -18,8 +19,10 @@ const Header = ({fullName, picture, bio}) => {
           <Text style={styles.description}>{bio ?? 'Lorem ipsum'}</Text>
         </View>
       </View>
-      <Text style={styles.title}>My Photos</Text>
-    </View>
+      <Animatable.Text animation="fadeIn" delay={700} duration={350} style={styles.title}>
+        My Photos
+      </Animatable.Text>
+    </Animatable.View>
   );
 };
 const styles = StyleSheet.create({

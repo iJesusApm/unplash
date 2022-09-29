@@ -1,10 +1,13 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
+import * as Animatable from 'react-native-animatable';
 
 const Header = () => {
   return (
     <>
-      <Text style={styles.text}>Discover</Text>
+      <Animatable.Text animation="fadeIn" delay={700} duration={350} style={styles.text}>
+        Discover
+      </Animatable.Text>
     </>
   );
 };

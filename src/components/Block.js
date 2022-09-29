@@ -1,12 +1,13 @@
 import React from 'react';
-import {View, StyleSheet, Image, Text, TouchableOpacity} from 'react-native';
+import {StyleSheet, Image, Text, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import * as Animatable from 'react-native-animatable';
 import Overlay from './overlay';
 
 const Block = props => {
   const {urls, likes} = props.post;
   const secondColum = Number(props.index) % 2 === 0;
-
+  const animationType = secondColum ? 'fadeInLeft' : 'fadeInRight';
   const navigation = useNavigation();
 
   const handlePress = () => {
@@ -17,7 +18,11 @@ const Block = props => {
   };
 
   return (
-    <View style={[styles.content, !secondColum && styles.margin]}>
+    <Animatable.View
+      animation={animationType}
+      delay={700}
+      duration={350}
+      style={[styles.content, !secondColum && styles.margin]}>
       <TouchableOpacity onPress={handlePress}>
         <Image
           source={{
@@ -30,7 +35,7 @@ const Block = props => {
           <Text style={styles.subTitle}>{likes} votos</Text>
         </Overlay>
       </TouchableOpacity>
-    </View>
+    </Animatable.View>
   );
 };
 const styles = StyleSheet.create({
