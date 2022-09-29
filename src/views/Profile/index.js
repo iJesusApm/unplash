@@ -1,14 +1,25 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {StyleSheet, StatusBar} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {useRoute} from '@react-navigation/native';
+import {PostContextProvider} from '../../hooks/useFetchPost';
+
+import Template from './organisms/Template';
 
 const Profile = () => {
+  const route = useRoute();
+  const {user} = route.params;
+  console.log(user);
   return (
-    <View style={styles.container}>
-      <Text>This is the Profile</Text>
-    </View>
+    <SafeAreaView style={styles.main}>
+      <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
+      <PostContextProvider>
+        <Template user={user} />
+      </PostContextProvider>
+    </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
-  container: {flex: 1},
+  main: {flex: 1, backgroundColor: '#FFFFFF', marginHorizontal: 13},
 });
 export default Profile;

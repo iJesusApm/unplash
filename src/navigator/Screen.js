@@ -1,7 +1,9 @@
-import Fee from '../views/Fee';
+import Home from '../views/Fee';
 import Profile from '../views/Profile';
+import Post from '../views/Post';
 
 export default {
-  Fee,
+  Home,
+  Post,
   Profile,
 };

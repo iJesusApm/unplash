@@ -3,14 +3,14 @@ import {StyleSheet, StatusBar} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {PostContextProvider} from '../../hooks/useFetchPost';
 
-import BlockList from './organisms/BlockList';
+import FeedList from './organisms/FeedList';
 
-const Fee = () => {
+const Home = () => {
   return (
     <SafeAreaView style={styles.main}>
       <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
       <PostContextProvider>
-        <BlockList />
+        <FeedList />
       </PostContextProvider>
     </SafeAreaView>
   );
@@ -18,4 +18,4 @@ const Fee = () => {
 const styles = StyleSheet.create({
   main: {flex: 1, backgroundColor: '#FFFFFF', marginHorizontal: 13},
 });
-export default Fee;
+export default Home;
